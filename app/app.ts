@@ -24,4 +24,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [], {tabsPlacement: 'top'});
+ionicBootstrap(MyApp, [], {tabsPlacement: 'bottom'});

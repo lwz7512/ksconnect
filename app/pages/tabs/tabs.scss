@@ -3,7 +3,7 @@ body.ios {
 }
 
 ion-tabbar {
-  // 子元素无均分效果
+  // 去掉子元素均分效果
   // justify-content: flex-start;
   background: #0F6CB2;
 }
@@ -15,7 +15,7 @@ ion-tabbar {
   padding: 0 10px;
 
   &[aria-selected="false"] {
-    color: #333333 !important;
+    color: #AAAAAA !important;
     background-color: #0F6CB2;
 
   }
@@ -39,3 +39,6 @@ ion-tabbar {
 .bar-button-default {
   color: #FFFFFF;
 }
+
+
+// ......
