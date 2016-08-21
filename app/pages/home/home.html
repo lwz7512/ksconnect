@@ -8,20 +8,25 @@
     <ion-title>话题</ion-title>
     <ion-buttons end>
       <button >
-        <ion-icon name="build"></ion-icon>
+        <!-- <ion-icon name="build"></ion-icon> -->
+        <!-- <span class="fa fa-google-wallet"></span> -->
+        <i class="fa fa-filter"></i>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="home">
-  
-  <h2>Welcome to Kstart Connect!</h2>
-  <p>
+<ion-content  class="home">
+  <ion-searchbar [(ngModel)]="searchQuery" cancelButtonText="取消" placeholder="今天您想了解点什么"
+    (ionInput)="getItems($event)"
+    (ionCancel)="onCancel($event)"></ion-searchbar>
+
+  <h2 padding>Welcome to Kstart Connect!</h2>
+  <p padding>
     This starter project comes with simple tabs-based layout for apps
     that are going to primarily use a Tabbed UI.
   </p>
-  <p>
+  <p padding>
     Take a look at the <code>app/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>

@@ -7,7 +7,11 @@
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
 
-@import "../pages/tabs/tabs.scss";
+@import "Font-Awesome-For-Ionic-Tabs/font-awesome-ionic-tabs";
+
+@import "../../node_modules/font-awesome/scss/font-awesome";
+
+@import "../pages/tabs/tabs";
 
 @import "../pages/about/about";
 
@@ -15,4 +19,4 @@
 
 @import "../pages/home/home";
 
-@import "../pages/mine/mine.scss";
+@import "../pages/mine/mine";

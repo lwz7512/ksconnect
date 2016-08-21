@@ -64,9 +64,31 @@ gulp.task('build', ['clean'], function(done){
   );
 });
 
-gulp.task('sass', buildSass);
+// 添加fontawesome字体拷贝 @2016/08/21
+gulp.task('fonts', function(){
+  return copyFonts({
+    src: ['node_modules/ionic-angular/fonts/**/*.+(ttf|woff|woff2)',
+      'node_modules/font-awesome/fonts/**/*.+(eot|ttf|woff|woff2|svg)'],
+    });
+});
+// 添加fontawesome样式编译 @2016/08/21
+gulp.task('sass', function(){
+  return buildSass({
+    sassOptions: {
+      includePaths: [
+        'node_modules/ionic-angular',
+        'node_modules/ionicons/dist/scss',
+        'node_modules/font-awesome/scss'
+      ]
+    }
+  });
+});
+
+// 默认的sass任务
+// gulp.task('sass', buildSass);
+// 这是项目初始化时的默认字体拷贝任务
+// gulp.task('fonts', copyFonts);
 gulp.task('html', copyHTML);
-gulp.task('fonts', copyFonts);
 gulp.task('scripts', copyScripts);
 gulp.task('clean', function(){
   return del('www/build');
