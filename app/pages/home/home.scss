@@ -1,2 +1,96 @@
 .home {
+  background-color: #EEEEEE;
+
+  a {
+    color: #2496FC;
+  }
+}
+
+.ks-blue {
+  color: #2496FC;
+}
+
+ion-card.nogap {
+  margin: 0px 0 4px 0;
+  width: 100%;
+  border-radius: 0;
+}
+
+ion-card img.gap {
+  padding: 16px 16px 0 16px;
+}
+
+ion-card img.inline {
+  display: inline;
+}
+
+ion-card.orange-bg {
+  background: #F18C3A;
+  color: #FFFFFF;
+}
+
+ion-card ion-card-header.white {
+  color: #FFFFFF;
+}
+
+ion-card .tag {
+  font-size: 1.0rem;
+}
+// 表格中的列内容居中
+ion-row[center] ion-col {
+  /* Safari, Chrome, and Opera */
+  display:-webkit-box;
+  // 水平居中
+  -webkit-box-pack:center;
+  // 垂直居中
+  // -webkit-box-align:center;
+  // background-color: #F5F5F5;
+}
+
+.whitesmoke-bg {
+  background-color: #F5F5F5;
+}
+
+.white-bg {
+  background-color: #FFFFFF;
+}
+
+.primary-color {
+  color: #387ef5;
+}
+
+.gray-color {
+  color: #666666;
+}
+
+.margin-top-2px {
+  margin-top: 2px;
+}
+
+.padding-top-1px {
+  padding-top: 1px;
+}
+
+.padding-top-10px {
+  padding-top: 10px;
+}
+
+.padding-left-10px {
+  padding-left: 10px;
+}
+
+.padding-right-10px {
+  padding-right: 10px;
+}
+
+.right-angle {
+  border-radius: 0;
+}
+
+.button-small.tiny {
+  padding: 0;
+}
+
+.bar-button.larger {
+  font-size: 2.0rem;
 }
