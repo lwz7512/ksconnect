@@ -3,6 +3,8 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 
+import {Host} from './providers/host/host';
+import {CommunityData} from './providers/community-data/community-data';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -24,5 +26,5 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [],
+ionicBootstrap(MyApp, [Host, CommunityData],
   {tabsPlacement: 'top', backButtonText: '',});

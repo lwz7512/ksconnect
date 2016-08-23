@@ -1,15 +1,6 @@
-.home {
-  background-color: #EEEEEE;
-
-  a {
-    color: #2496FC;
-  }
+ion-searchbar {
+  background: rgba(0, 0, 0, 0.1);
 }
-
-.ks-blue {
-  color: #2496FC;
-}
-
 ion-card.nogap {
   margin: 0px 0 4px 0;
   width: 100%;
@@ -36,6 +27,19 @@ ion-card ion-card-header.white {
 ion-card .tag {
   font-size: 1.0rem;
 }
+
+.home {
+  background-color: #EEEEEE;
+
+  a {
+    color: #2496FC;
+  }
+}
+
+.ks-blue {
+  color: #2496FC;
+}
+
 // 表格中的列内容居中
 ion-row[center] ion-col {
   /* Safari, Chrome, and Opera */

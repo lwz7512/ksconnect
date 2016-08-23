@@ -92,6 +92,25 @@
     </ion-row>
   </ion-card>
 
+  <!-- 动态卡片 -->
+  <ion-card class="nogap" *ngFor="let topic of topics">
+    <ion-card-content>
+      {{topic.title}}
+    </ion-card-content>
+    <ion-row center *ngIf="topic.images_link.length">
+      <ion-col>
+        <img src="{{topic.images_link[0]}}" class=" inline"/>
+      </ion-col>
+      <ion-col>
+        <img *ngIf="topic.images_link.length>1" src="{{topic.images_link[1]}}" class=" inline"/>
+      </ion-col>
+      <ion-col>
+        <img *ngIf="topic.images_link.length>2" src="{{topic.images_link[2]}}" class=" inline"/>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
   <!-- <button fab primary fab-bottom fab-right>
     <ion-icon name="add"></ion-icon>
   </button> -->
