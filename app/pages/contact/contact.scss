@@ -1,2 +1,66 @@
 .contact {
+  // background-color: $ks-background-color;
+
+  .segment-button {
+    color: #444444;
+    background: #FFFFFF;
+    // 按钮底部样式
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+  .segment-button.segment-activated {
+    color: $ks-background-blue;
+    border-bottom-color: $ks-background-blue;
+    opacity: 1;
+  }
+  .segment-button:first-of-type {
+    border-radius: 0;
+  }
+  .segment-button:last-of-type {
+    border-radius: 0;
+  }
+
+  ion-list {
+    margin: 0;
+  }
+
+  ion-list > .item:first-child {
+    border-top: none;
+  }
+
+  ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
+    border-bottom: none;
+  }
+
+  ion-col > div {
+    padding: 2px;
+    text-align: center;
+    background-color: #F9FAFB;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    color: $ks-text-color;
+
+    font-size: 1.0rem;
+  }
+
+  ion-col > div.img {
+    padding: 0;
+    border-top: 1px solid #ddd;
+  }
+
+  ion-col > div.label {
+    border-bottom: 1px solid #ddd;
+  }
+
+
+  ion-col.left {
+    padding: 10px 10px 10px 20px;
+  }
+
+  ion-col.right {
+    padding: 10px 20px 10px 20px;
+  }
+
+
 }

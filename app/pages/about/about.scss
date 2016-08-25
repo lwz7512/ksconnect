@@ -1,2 +1,41 @@
 .about {
+  background-color: $ks-background-color;
+
+  ion-slides {
+    height: 25%;
+  }
+
+  ion-col.left {
+    padding: 1px 1px 0 0;
+  }
+
+  ion-col.right {
+    padding: 1px 0 0 1px;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination {
+    bottom: 10px;
+  }
+
+  .button {
+    margin: 1px 0 0 0;
+    font-size: 1.4rem;//相对于根元素
+    height: 3.2em;//相对于父级元素
+  }
+
+  .button-white {
+    color: #444444;
+  }
+
+}
+
+// 按钮里的文字向左对齐
+.left-text > .button-inner {
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+}
+// 按钮里的文字向右对齐
+.right-text > .button-inner {
+  justify-content: flex-end;;
+  -webkit-justify-content: flex-end;
 }

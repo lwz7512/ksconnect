@@ -6,6 +6,87 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="about">
-  this is project page...
+<ion-content class="about">
+  <!-- banner slides -->
+  <ion-slides pager [options]="mySlideOptions">
+    <ion-slide >
+      <img src="img/slide_1.jpg" class="slide-image"/>
+    </ion-slide>
+
+    <ion-slide >
+      <img src="img/slide_2.jpg" class="slide-image"/>
+    </ion-slide>
+
+    <ion-slide >
+      <img src="img/slide_3.jpg" class="slide-image"/>
+    </ion-slide>
+  </ion-slides>
+  <!-- ranks -->
+  <ion-row class="margin-top-2px">
+    <ion-col class="left">
+      <button white full>
+        <ion-icon name="bookmark" primary></ion-icon>创业项目榜单
+      </button>
+    </ion-col>
+    <ion-col class="right">
+      <button white full>
+        <ion-icon name="bookmark" energized></ion-icon>投资人榜单
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="left">
+      <button white full>
+        <ion-icon name="flame" danger></ion-icon>创业项目推荐
+      </button>
+    </ion-col>
+    <ion-col class="right">
+      <button white full>
+        <ion-icon name="flame" royal></ion-icon>投资人推荐
+      </button>
+    </ion-col>
+  </ion-row>
+  <!-- reports -->
+  <ion-row class="margin-top-4px">
+    <ion-col no-padding>
+      <button white full class="left-text">
+        <ion-icon name="albums" vibrant></ion-icon>行业报告
+      </button>
+    </ion-col>
+    <ion-col no-padding>
+      <button white full class="right-text">
+        N篇行业报告<ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <!-- activities card-->
+  <ion-row class="margin-top-4px">
+    <ion-col no-padding>
+      <button white full class="left-text">
+        <ion-icon name="beer" secondary></ion-icon>活动
+      </button>
+    </ion-col>
+    <ion-col no-padding>
+      <button white full class="right-text">
+        N个活动<ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <!-- 活动幻灯片 -->
+  <ion-slides pager class="margin-top-4px" [options]="bottomslides">
+
+    <ion-slide style="background-color: white">
+      <h2>活动 1</h2>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <h2>活动 2</h2>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <h2>活动 3</h2>
+    </ion-slide>
+
+  </ion-slides>
+
 </ion-content>

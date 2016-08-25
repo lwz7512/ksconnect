@@ -7,4 +7,14 @@ import {NavController} from 'ionic-angular';
 export class AboutPage {
   constructor(private navCtrl: NavController) {
   }
+  // 幻灯片选项
+  mySlideOptions = {
+    loop: true, pager: true,
+    autoplay: 2000
+  };
+  // 底部幻灯片选项配置
+  bottomslides = {
+    slidesPerView: 3,spaceBetween: 1
+  };
+
 }

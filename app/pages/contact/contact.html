@@ -3,15 +3,130 @@
     <ion-title>
       群组
     </ion-title>
+    <ion-buttons end >
+      <button class="padding-right-10px larger">
+        <!-- <i class="fa fa-plus"></i> -->
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
+<ion-content class="contact">
+  <!-- <ion-list>
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-left></ion-icon>
       @ionicframework
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <!-- 选项卡切换 -->
+  <ion-segment [(ngModel)]="pet" >
+    <ion-segment-button value="myteam">
+      我的团队
+    </ion-segment-button>
+    <ion-segment-button value="pubteam">
+      公开团队
+    </ion-segment-button>
+    <ion-segment-button value="others">
+      热门团队
+    </ion-segment-button>
+  </ion-segment>
+  <div padding-2px ks-background>
+
+  </div>
+  <div [ngSwitch]="pet" >
+    <!-- <p padding>
+      不管怎么切换都显示
+    </p> -->
+    <ion-list *ngSwitchCase="'myteam'">
+      <ion-row>
+        <ion-col class="left">
+          <div class="img">
+            <img src="img/thumbnail-puppy-1.jpg">
+          </div>
+          <div>Kstart-RD</div>
+          <div class="label">8人</div>
+        </ion-col>
+        <ion-col class="right">
+          <div class="img">
+            <img src="img/thumbnail-puppy-2.jpg">
+          </div>
+          <div>Kstart-ADV</div>
+          <div class="label">2人</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="left">
+          <div class="img">
+            <img src="img/thumbnail-puppy-3.jpg">
+          </div>
+          <div>Kstart-ACD</div>
+          <div class="label">5人</div>
+        </ion-col>
+        <ion-col class="right">
+          <div class="img">
+            <img src="img/thumbnail-puppy-4.jpg">
+          </div>
+          <div>Kstart-健康乐创汇</div>
+          <div class="label">6人</div>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'pubteam'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-3.jpg">
+        </ion-thumbnail>
+        <h2>Milo</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-4.jpg">
+        </ion-thumbnail>
+        <h2>Bandit</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-2.jpg">
+        </ion-thumbnail>
+        <h2>Nala</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'others'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

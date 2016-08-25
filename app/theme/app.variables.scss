@@ -36,9 +36,14 @@ $colors: (
   royal:      #7e60ff,
   subtle:     #444444,
   vibrant:    rebeccapurple,
-  bright:     #ffc125
+  bright:     #ffc125,
+  white:      #FFFFFF,
 );
 
+// @2016/08/25
+$ks-background-blue: #2496FC;
+$ks-background-color: #EEEEEE;
+$ks-text-color: #444444;
 
 // toolbar theme == tabs theme ...
 $toolbar-inactive-color: #AAAAAA;

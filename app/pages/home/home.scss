@@ -1,3 +1,16 @@
+[ks-blue] {
+  color: $ks-background-blue;
+}
+
+[ks-background] {
+  background-color: $ks-background-color;
+}
+
+[padding-2px] {
+  padding: 2px;
+}
+
+
 ion-searchbar {
   background: rgba(0, 0, 0, 0.1);
 }
@@ -29,15 +42,15 @@ ion-card .tag {
 }
 
 .home {
-  background-color: #EEEEEE;
+  background-color: $ks-background-color;
 
   a {
-    color: #2496FC;
+    color: $ks-background-blue;
   }
 }
 
 .ks-blue {
-  color: #2496FC;
+  color: $ks-background-blue;
 }
 
 // 表格中的列内容居中
@@ -69,6 +82,10 @@ ion-row[center] ion-col {
 
 .margin-top-2px {
   margin-top: 2px;
+}
+
+.margin-top-4px {
+  margin-top: 4px;
 }
 
 .padding-top-1px {

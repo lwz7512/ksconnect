@@ -31,7 +31,6 @@ export class HomePage {
   }
 
 
-
   openTopicDetail(){
     console.log('open details...');
     this.navCtrl.push(TopicDetailPage);
