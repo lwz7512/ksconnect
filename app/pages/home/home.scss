@@ -2,12 +2,25 @@
   color: $ks-background-blue;
 }
 
+[white] {
+  color: #FFFFFF;
+}
+
+
 [ks-background] {
   background-color: $ks-background-color;
 }
 
 [padding-2px] {
   padding: 2px;
+}
+
+[margin-top-1px] {
+  margin-top: 1px;
+}
+
+[margin-top-4px] {
+  margin-top: 4px;
 }
 
 
@@ -62,6 +75,18 @@ ion-row[center] ion-col {
   // 垂直居中
   // -webkit-box-align:center;
   // background-color: #F5F5F5;
+}
+ion-col[left] {
+  /* Safari, Chrome, and Opera */
+  display:-webkit-box;
+  // 水平居中
+  -webkit-box-pack:start;
+}
+ion-col[right] {
+  /* Safari, Chrome, and Opera */
+  display:-webkit-box;
+  // 水平居中
+  -webkit-box-pack:end;
 }
 
 .whitesmoke-bg {

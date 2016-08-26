@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar no-border-bottom>
+    <ion-title>
+      群组
+    </ion-title>
+    <ion-buttons end >
+      <!-- <button class="padding-right-10px larger">
+        <ion-icon name="add"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="quanzi">
+  <!-- 公开小组 -->
+  <ion-card>
+    <ion-card-header>
+      <span flex-v-center padding-left-6px>公开小组</span>
+      <button clear small class="in-card-header">全部</button>
+    </ion-card-header>
+  </ion-card>
+  <ion-slides pager [options]="topslides">
+
+    <ion-slide style="background-color: white">
+      <div class="img">
+        <img src="img/avatar-ts-woody.png">
+      </div>
+      <div small>大数据</div>
+      <div small>8人</div>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <div class="img">
+        <img src="img/thumbnail-puppy-2.jpg">
+      </div>
+      <div small>创业融资</div>
+      <div small>18人</div>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <div class="img">
+        <img src="img/thumbnail-puppy-3.jpg">
+      </div>
+      <div small>大健康医疗</div>
+      <div small>88人</div>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <div class="img">
+        <img src="img/thumbnail-puppy-4.jpg">
+      </div>
+      <div small>同城相亲</div>
+      <div small>888人</div>
+    </ion-slide>
+    <ion-slide style="background-color: white">
+      <div class="img">
+        <img src="img/thumbnail-puppy-1.jpg">
+      </div>
+      <div small>Kstart-RD</div>
+      <div small>8人</div>
+    </ion-slide>
+
+  </ion-slides>
+  <!-- 我的小组 -->
+  <ion-list no-border margin-top-4px>
+    <ion-list-header>
+      我的小组
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/avatar-ts-woody.png">
+      </ion-avatar>
+      <h2>大数据</h2>
+      <p>专注于大数据业务讨论，扯扯淡、唠唠嗑。。。!</p>
+      <ion-note item-right>8人</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/avatar-ts-buzz.png">
+      </ion-avatar>
+      <h2>健康与医疗</h2>
+      <p>挖掘市场新机会，讨论业务场景。。。</p>
+      <ion-note item-right>20 人</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/avatar-ts-jessie.png">
+      </ion-avatar>
+      <h2>新媒体</h2>
+      <p>移动互联网时代下的媒体人怎么过？</p>
+      <ion-note item-right>10人</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/avatar-ts-potatohead.png">
+      </ion-avatar>
+      <h2>创业吃货组</h2>
+      <p>没事一起约个饭局吧，说不定有火花碰撞哟！</p>
+      <ion-note item-right>100人</ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

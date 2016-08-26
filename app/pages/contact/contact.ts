@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
 
 @Component({
-  templateUrl: 'build/pages/contact/contact.html'
+  templateUrl: 'build/pages/contact/quanzi.html'
 })
 export class ContactPage {
 
@@ -12,4 +12,10 @@ export class ContactPage {
   constructor(private platform: Platform, private navCtrl: NavController) {
     this.isAndroid = platform.is('android');
   }
+
+  // 底部幻灯片选项配置
+  topslides = {
+    slidesPerView: 4,spaceBetween: 1
+  };
+
 }
