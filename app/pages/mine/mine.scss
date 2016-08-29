@@ -12,7 +12,7 @@
 
   .button-fab.activated {
     background-color: #FFFFFF;
-    color: $ks-text-color; 
+    color: $ks-text-color;
   }
 
   ion-avatar img {
@@ -21,4 +21,65 @@
     border-radius: 2.8rem;
     border: 2px solid white;
   }
+
+  .button.write-btn {
+    height: 1.6em;
+    margin: -30px 0 0 -20px;
+    position: relative;
+    background-color: #25A3FD;
+  }
+
+  .button.write-btn > .button-inner {
+    padding: 0 4px 0 20px;
+  }
+
+  .intro-txt {
+    padding: 0 16px 16px 16px;
+    color: $ks-text-color;
+    line-height: 1.4;
+    font-size: 1.2rem;
+  }
+
+  .button.public {
+    margin: 0;
+    padding: 0 0.9em;
+    height: 1.8em;
+  }
+
+  .company-txt {
+    color: $ks-text-color;
+    line-height: 1.4;
+    font-size: 1.2rem;
+    padding-left: 12px;
+  }
+
+  ion-row[top-border] {
+    border-top: 1px solid $ks-background-color;
+  }
+
+  .button-icon-only ion-icon {
+    font-size: 1.6em;
+  }
+
+}
+
+.left-blue-border {
+  border-left: 2px solid $ks-background-blue;
+  padding-left: 10px;
+}
+
+.button.no-margin {
+  margin: 0;
+}
+
+[pink] {
+  color: #FF1493;
+}
+
+[bold] {
+  font-weight: bold;
+}
+
+[margin-bottom-10px] {
+  margin-bottom: 10px;
 }

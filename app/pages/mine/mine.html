@@ -3,6 +3,12 @@
     <ion-title>
       我的
     </ion-title>
+    <ion-buttons end >
+      <button class="padding-right-10px larger">
+        <!-- <ion-icon name="settings"></ion-icon> -->
+        <i class="fa fa-cog"></i>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,15 +18,15 @@
   <ion-grid class="peronal-panel-background" white>
     <ion-row >
       <ion-col right class="padding-right-10px">
-        <button fab><ion-icon name="heart"></ion-icon></button>
+        <button fab><ion-icon name="star"></ion-icon></button>
       </ion-col>
       <ion-col class="padding-left-10px">
-        <button fab><ion-icon name="star"></ion-icon></button>
+        <button fab><ion-icon name="chatbubbles"></ion-icon></button>
       </ion-col>
     </ion-row>
     <ion-row center>
       <ion-col >
-        <button fab><ion-icon name="chatbubbles"></ion-icon></button>
+        <button fab><ion-icon name="heart"></ion-icon></button>
       </ion-col>
       <ion-col >
         <ion-avatar >
@@ -36,10 +42,49 @@
       <ion-col >投资人</ion-col>
       <ion-col ></ion-col>
     </ion-row>
-    <ion-row center>
+    <ion-row center margin-bottom-10px>
       <ion-col ></ion-col>
-      <ion-col >April Zhai</ion-col>
+      <ion-col >
+        April Zhai
+        <i class="fa fa-venus" pink></i>
+      </ion-col>
       <ion-col ></ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- 编辑按钮 -->
+  <button round class="write-btn">
+    <ion-icon name="create"></ion-icon>
+  </button>
+  <!-- 用户简介 -->
+  <ion-grid no-padding>
+    <ion-row class="intro-txt">作为一名资深的设计湿，很开心能加入这个社区里，在这里能找到自己喜欢的东西，和大家一起交流，感觉忒好咧。。。</ion-row>
+    <ion-row>
+      <ion-col bold class="left-blue-border">公司名称</ion-col>
+      <ion-col text-right class="padding-top-0">
+        <button small round class="public">公开</button>
+      </ion-col>
+    </ion-row>
+    <ion-row top-border>
+      <ion-col class="company-txt">毕马威企业咨询</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col bold class="left-blue-border">技能标签</ion-col>
+    </ion-row>
+    <ion-row top-border>
+      <ion-col>
+        <button small outline>数据分析</button>
+        <button small outline>项目管理</button>
+        <button small outline>咨询</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col bold class="left-blue-border">联系方式</ion-col>
+      <ion-col text-right class="padding-top-0">
+        <button small round class="public">公开</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="company-txt">april.zhai@kpmg.cn</ion-col>
     </ion-row>
   </ion-grid>
 

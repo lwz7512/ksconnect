@@ -6,6 +6,9 @@
   color: #FFFFFF;
 }
 
+[ks-default-text]{
+  color: $ks-text-color;
+}
 
 [ks-background] {
   background-color: $ks-background-color;
@@ -111,6 +114,10 @@ ion-col[right] {
 
 .margin-top-4px {
   margin-top: 4px;
+}
+
+.padding-top-0 {
+  padding-top: 0;
 }
 
 .padding-top-1px {
