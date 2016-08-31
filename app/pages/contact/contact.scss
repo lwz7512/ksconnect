@@ -115,21 +115,3 @@
   }
 
 }
-
-[flex-v-center] {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  // 垂直居中
-  -webkit-box-align: center;
-  align-items: center;
-}
-
-[padding-left-6px] {
-  padding-left: 6px;
-}
-
-[small] {
-  font-size: 12px;
-}

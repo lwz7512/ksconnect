@@ -26,6 +26,27 @@
   margin-top: 4px;
 }
 
+[no-roundcorner] {
+  border-radius: 0;
+}
+
+[flex-v-center] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  // 垂直居中
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+[padding-left-6px] {
+  padding-left: 6px;
+}
+
+[small] {
+  font-size: 12px;
+}
 
 ion-searchbar {
   background: rgba(0, 0, 0, 0.1);
@@ -82,13 +103,13 @@ ion-row[center] ion-col {
 ion-col[left] {
   /* Safari, Chrome, and Opera */
   display:-webkit-box;
-  // 水平居中
+  // 靠左
   -webkit-box-pack:start;
 }
 ion-col[right] {
   /* Safari, Chrome, and Opera */
   display:-webkit-box;
-  // 水平居中
+  // 靠右
   -webkit-box-pack:end;
 }
 
@@ -144,6 +165,31 @@ ion-col[right] {
   padding: 0;
 }
 
+// 针对顶部工具栏的按钮图标，大一点
 .bar-button.larger {
   font-size: 2.0rem;
 }
+
+// 拍照的图标按钮，大一点
+.button.large-btn {
+  font-size: 2.5rem;
+}
+// 相应高度调整下
+.large-btn.button-icon-only {
+  padding: 39px 0;
+  margin: 0;
+}
+
+// 工具栏右边的按钮右边距离大点
+.bar-button-icon-only {
+  padding: 0 10px;
+}
+// 从相册或者拍照得到的图片大小
+img.select-img {
+  max-width: 80px;
+  height: auto;
+}
+
+//
+//
+//

@@ -23,7 +23,7 @@ export class CommunityData {
 
   }
 
-
+  // 获取首页微博列表
   load() {
     if (this.data) {
       // already loaded data
@@ -53,5 +53,30 @@ export class CommunityData {
       });
     });
   }//end of load...
+
+
+  // 发送微博
+  sendWeibo(weibo){
+    var params = "content=" + weibo.content + "&tags=" + weibo.tags;
+    params += "&images=[]";//TODO： 图片待补充
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    return new Promise(resolve => {
+      this.http.post(this._hostURL+'/weibo', params, {headers: headers}).subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        var pushresult = res.json();
+        // console.log(pushresult);
+        resolve(pushresult);
+      }, error => {
+        console.error('Ooopse! send failure!');
+        Promise.reject(error);
+      });
+    });
+  }
+
+
 
 }
