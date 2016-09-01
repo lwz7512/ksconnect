@@ -58,13 +58,17 @@ export class CommunityData {
   // 发送微博
   sendWeibo(weibo){
     var params = "content=" + weibo.content + "&tags=" + weibo.tags;
-    params += "&images=[]";//TODO： 图片待补充
-
+    // 图片数组
+    for(let i in weibo.images){
+      params += "&images["+i+"][id]="+weibo.images[i]['id'];
+      params += "&images["+i+"][link]="+weibo.images[i]['link'];
+    }
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
 
-    return new Promise(resolve => {
-      this.http.post(this._hostURL+'/weibo', params, {headers: headers}).subscribe(res => {
+    return new Promise((resolve, reject) => {
+      this.http.post(this._hostURL+'/weibo', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         var pushresult = res.json();
@@ -72,7 +76,9 @@ export class CommunityData {
         resolve(pushresult);
       }, error => {
         console.error('Ooopse! send failure!');
-        Promise.reject(error);
+        alert(error);
+        // 抛出异常
+        reject(new Error(error));
       });
     });
   }

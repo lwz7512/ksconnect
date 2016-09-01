@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Host {
 
-  prodURL = 'http://api.kstartup.cn';
+  private prodURL = 'http://api.kstartup.cn';
 
   constructor(private http: Http) {
 
