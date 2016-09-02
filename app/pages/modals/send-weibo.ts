@@ -50,6 +50,10 @@ export class ModalsContentPage {
       this._dimissLoading();
       this.dismiss();
       setTimeout(()=>this._showToast('微博发送成功!'), 500);
+
+      // 强制刷新主页
+      this.cmntdata.forceToRefresh = true;
+
       // TODO, refresh homepage....
       //
     }, error => {

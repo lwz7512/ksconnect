@@ -93,19 +93,19 @@
   </ion-card>
 
   <!-- 动态卡片 -->
-  <ion-card class="nogap" *ngFor="let topic of topics">
-    <ion-card-content>
-      {{topic.title}}
+  <ion-card class="nogap" *ngFor="let weibo of weibos">
+    <ion-card-content (click)="openTopicDetail()">
+      {{weibo.content}}
     </ion-card-content>
-    <ion-row center *ngIf="topic.images_link.length">
+    <ion-row center *ngIf="weibo.images.length">
       <ion-col>
-        <img src="{{topic.images_link[0]}}" class=" inline"/>
+        <img src="{{weibo.images[0].link}}" class=" inline" (error)="imgError($event)"/>
       </ion-col>
       <ion-col>
-        <img *ngIf="topic.images_link.length>1" src="{{topic.images_link[1]}}" class=" inline"/>
+        <img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" class=" inline" (error)="imgError($event)"/>
       </ion-col>
       <ion-col>
-        <img *ngIf="topic.images_link.length>2" src="{{topic.images_link[2]}}" class=" inline"/>
+        <img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" class=" inline" (error)="imgError($event)"/>
       </ion-col>
     </ion-row>
   </ion-card>

@@ -18,13 +18,37 @@ export class CommunityData {
 
   _hostURL: string;
 
+  forceToRefresh: boolean;
+
   constructor(private http: Http, private host:Host) {
     this._hostURL = host.getHostURL();
 
   }
 
+  loadWeibo(){
+    if (this.data && !this.forceToRefresh) {
+      console.log('>>> use cache data....')
+      return Promise.resolve(this.data);
+    }
+    return new Promise(resolve => {
+
+      this.http.get(this._hostURL+'/weibo').subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        this.data = res.json();
+
+        // FIXME, 补充图片字段不为空 @2016/08/23
+        this.data.res.data.forEach(item => {
+          if(!item.images) item.images = [];
+        });
+        // console.log(this.data);
+        resolve(this.data);
+      });
+    });
+  }
+
   // 获取首页微博列表
-  load() {
+  loadBBS() {
     if (this.data) {
       // already loaded data
       return Promise.resolve(this.data);

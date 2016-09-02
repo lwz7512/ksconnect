@@ -8,12 +8,14 @@ import {TopicDetailPage,} from '../topic-detail/topic-detail';
 import {CommunityData} from '../../providers/community-data/community-data';
 import {ModalsContentPage} from '../modals/send-weibo';
 
+
+
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
 
-  topics: any;
+  weibos: any;//绑定到首页卡片
   loader: Loading;
 
   constructor(
@@ -21,7 +23,7 @@ export class HomePage {
     private cmntdata: CommunityData,
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, private host: Host) {
 
     // let innerTxt = "a#b.c#de,f#g-h#....";
     // let converted = innerTxt.replace(/#*#/g, ' ');
@@ -35,13 +37,21 @@ export class HomePage {
 
   // 每次进来都要执行
   ionViewDidEnter() {
-
-    this.cmntdata.load().then(data => {
-      // console.log(data.res.data);
-      this.topics = data.res.data;
+    console.log('>>> enter the home view...')
+    this.cmntdata.loadWeibo().then(data => {
+      console.log(data.res.data);
+      this.weibos = data.res.data;
+      // 更新数据后关闭强制刷新
+      this.cmntdata.forceToRefresh = false;
     });
+
   }
 
+  // 图片加载失败的处理
+  imgError(event){
+    event.target.src = this.host.getMissingImg();
+    // console.error('image load error!');
+  }
 
   openTopicDetail(){
     console.log('open details...');
@@ -49,7 +59,6 @@ export class HomePage {
   }
 
   openModal(characterNum) {
-
     let modal = this.modalCtrl.create(ModalsContentPage, characterNum);
     modal.present();
   }
