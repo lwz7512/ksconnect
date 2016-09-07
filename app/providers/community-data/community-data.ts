@@ -17,7 +17,7 @@ export class CommunityData {
   data: any;
 
   _hostURL: string;
-
+  // 强制更新开关
   forceToRefresh: boolean;
 
   constructor(private http: Http, private host:Host) {

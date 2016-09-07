@@ -99,13 +99,13 @@
     </ion-card-content>
     <ion-row center *ngIf="weibo.images.length">
       <ion-col>
-        <img src="{{weibo.images[0].link}}" class=" inline" (error)="imgError($event)"/>
+        <smt-img src="{{weibo.images[0].link}}" ></smt-img>
       </ion-col>
       <ion-col>
-        <img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" class=" inline" (error)="imgError($event)"/>
+        <smt-img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" ></smt-img>
       </ion-col>
       <ion-col>
-        <img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" class=" inline" (error)="imgError($event)"/>
+        <smt-img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" ></smt-img>
       </ion-col>
     </ion-row>
   </ion-card>

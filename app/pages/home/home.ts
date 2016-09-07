@@ -8,9 +8,10 @@ import {TopicDetailPage,} from '../topic-detail/topic-detail';
 import {CommunityData} from '../../providers/community-data/community-data';
 import {ModalsContentPage} from '../modals/send-weibo';
 
-
+import {SmartImage} from '../../components/smart-image';
 
 @Component({
+  directives: [SmartImage],
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
@@ -23,34 +24,33 @@ export class HomePage {
     private cmntdata: CommunityData,
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController, private host: Host) {
+    private toastCtrl: ToastController,
+    private host: Host) {
 
     // let innerTxt = "a#b.c#de,f#g-h#....";
     // let converted = innerTxt.replace(/#*#/g, ' ');
     let innerTxt = '....#abc# , #FFF #';
     let converted = innerTxt.replace(/#([^#]*)#/g, "<a>$1</a>");
-    console.log(converted);
+    // console.log(converted);
     let attopic = '...@#some blabla...';
     let convertat = attopic.replace(/@#([^@#]*)\s/g, "<a>@#$1</a>");
-    console.log(convertat);
+    // console.log(convertat);
   }
 
   // 每次进来都要执行
   ionViewDidEnter() {
-    console.log('>>> enter the home view...')
+    console.log('>>> enter the home view...');
+
     this.cmntdata.loadWeibo().then(data => {
-      console.log(data.res.data);
+      // console.log(data.res.data);
       this.weibos = data.res.data;
       // 更新数据后关闭强制刷新
       this.cmntdata.forceToRefresh = false;
+      // 延迟关闭
+      setTimeout(()=>{this.loader.dismiss();}, 100);
     });
-
-  }
-
-  // 图片加载失败的处理
-  imgError(event){
-    event.target.src = this.host.getMissingImg();
-    // console.error('image load error!');
+    // 延迟打开，不然没法显示 @2016/09/
+    setTimeout(()=>{this.presentLoading();}, 100);
   }
 
   openTopicDetail(){
@@ -63,6 +63,12 @@ export class HomePage {
     modal.present();
   }
 
-
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "loading...",
+      // duration: 3000
+    });
+    this.loader.present();
+  }
 
 }

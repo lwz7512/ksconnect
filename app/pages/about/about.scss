@@ -27,6 +27,15 @@
     color: #444444;
   }
 
+  .swiper-slide {
+    font-size: 16px;
+    line-height: 1.4;//行高决定幻灯图片与下面的文字距离
+  }
+
+  .swiper-slide .img img {
+    height: 80px;
+  }
+
 }
 
 // 按钮里的文字向左对齐
@@ -38,4 +47,18 @@
 .right-text > .button-inner {
   justify-content: flex-end;;
   -webkit-justify-content: flex-end;
+}
+
+.justify-content {
+  // flexbox
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  // 均分处理，两端对齐
+  -webkit-box-pack:justify;
+  -ms-flex-pack:justify;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+
 }

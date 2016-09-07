@@ -10,7 +10,7 @@ export class AboutPage {
   // 幻灯片选项
   mySlideOptions = {
     loop: true, pager: true,
-    autoplay: 2000
+    // autoplay: 2000
   };
   // 底部幻灯片选项配置
   bottomslides = {
