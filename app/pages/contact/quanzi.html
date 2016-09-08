@@ -16,48 +16,17 @@
   <ion-card>
     <ion-card-header>
       <span flex-v-center padding-left-6px>公开小组</span>
-      <button clear small class="in-card-header">全部</button>
+      <button clear small class="in-card-header" (click)="openPublicGroups()">全部</button>
     </ion-card-header>
   </ion-card>
   <ion-slides pager [options]="topslides">
 
-    <ion-slide style="background-color: white">
+    <ion-slide style="background-color: white" *ngFor="let item of top4groups; " >
       <div class="img">
-        <img src="img/avatar-ts-woody.png">
+        <smt-img src="{{item.icon}}"></smt-img>
       </div>
-      <div small>大数据</div>
-      <div small>8人</div>
-    </ion-slide>
-
-    <ion-slide style="background-color: white">
-      <div class="img">
-        <img src="img/thumbnail-puppy-2.jpg">
-      </div>
-      <div small>创业融资</div>
-      <div small>18人</div>
-    </ion-slide>
-
-    <ion-slide style="background-color: white">
-      <div class="img">
-        <img src="img/thumbnail-puppy-3.jpg">
-      </div>
-      <div small>大健康医疗</div>
-      <div small>88人</div>
-    </ion-slide>
-
-    <ion-slide style="background-color: white">
-      <div class="img">
-        <img src="img/thumbnail-puppy-4.jpg">
-      </div>
-      <div small>同城相亲</div>
-      <div small>888人</div>
-    </ion-slide>
-    <ion-slide style="background-color: white">
-      <div class="img">
-        <img src="img/thumbnail-puppy-1.jpg">
-      </div>
-      <div small>Kstart-RD</div>
-      <div small>8人</div>
+      <div small>{{item.name}}</div>
+      <div small>{{item.members}}人</div>
     </ion-slide>
 
   </ion-slides>

@@ -18,6 +18,11 @@
     line-height: 1.4;//行高决定幻灯图片与下面的文字距离
   }
 
+  // 统一圈子幻灯片图片高度 @2016/09/08
+  .swiper-slide img {
+    height: 80px;
+  }
+
   // 两端对齐内容的卡片头部
   ion-card-header {
     font-size: 1.4rem;

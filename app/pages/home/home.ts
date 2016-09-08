@@ -40,16 +40,18 @@ export class HomePage {
   // 每次进来都要执行
   ionViewDidEnter() {
     console.log('>>> enter the home view...');
-
+    
     this.cmntdata.loadWeibo().then(data => {
       // console.log(data.res.data);
       this.weibos = data.res.data;
       // 更新数据后关闭强制刷新
       this.cmntdata.forceToRefresh = false;
       // 延迟关闭
+      if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
       setTimeout(()=>{this.loader.dismiss();}, 100);
     });
     // 延迟打开，不然没法显示 @2016/09/
+    if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
     setTimeout(()=>{this.presentLoading();}, 100);
   }
 

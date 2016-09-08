@@ -5,6 +5,8 @@ import {TabsPage} from './pages/tabs/tabs';
 
 import {Host} from './providers/host/host';
 import {CommunityData} from './providers/community-data/community-data';
+import {GroupData} from './providers/group-data/group-data';
+import {WikiData} from './providers/wiki-data/wiki-data';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -26,5 +28,8 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [Host, CommunityData],
-  {tabsPlacement: 'top', backButtonText: '',});
+ionicBootstrap(
+  MyApp,
+  [Host, CommunityData, GroupData, WikiData],
+  {tabsPlacement: 'top', backButtonText: '',}
+);

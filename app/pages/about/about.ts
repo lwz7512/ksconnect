@@ -1,12 +1,20 @@
+/**
+ * 创投圈模块
+ */
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+
+import {WikiData} from '../../providers/wiki-data/wiki-data';
 
 @Component({
   templateUrl: 'build/pages/about/about.html'
 })
 export class AboutPage {
-  constructor(private navCtrl: NavController) {
-  }
+
+  constructor(
+    private navCtrl: NavController,
+    private wikidata: WikiData) {}
+
   // 幻灯片选项
   mySlideOptions = {
     loop: true, pager: true,
@@ -16,5 +24,8 @@ export class AboutPage {
   bottomslides = {
     slidesPerView: 3,spaceBetween: 1
   };
+
+  // TODO:
+  // declare other public functions...
 
 }

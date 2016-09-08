@@ -1,0 +1,24 @@
+.pubgroup {
+
+  smt-img img {
+    width: 48px;
+  }
+
+  .group-cell-label {
+    color: $ks-text-color;
+    font-size: 12px;
+  }
+
+  [item-left] {
+    margin: 4px 8px 4px 0;
+  }
+
+  ion-label {
+    margin: 0px 8px 0px 0;
+  }
+
+  .item {
+    padding-left: 4px;
+  }
+
+}
