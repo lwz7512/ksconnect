@@ -40,7 +40,7 @@ export class ContactPage {
 
   ionViewDidEnter(){
     this.groupdata.loadPublicGroups().then(data=>{
-      console.log(data);
+      // console.log(data);
 
       this.pubgroups = data.res.data;
       this.top4groups = data.res.data.slice(0, 4);

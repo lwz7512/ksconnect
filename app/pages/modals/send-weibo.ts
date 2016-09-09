@@ -47,7 +47,7 @@ export class ModalsContentPage {
 
     this.cmntdata.sendWeibo(this.weibo).then(data => {
       console.log(data);
-      this._dimissLoading();
+      // this._dimissLoading();
       this.dismiss();
       setTimeout(()=>this._showToast('微博发送成功!'), 500);
 
@@ -62,7 +62,8 @@ export class ModalsContentPage {
       this._dimissLoading();
       this.dismiss();
     });
-    this._presentLoading();//open loading...
+    // FIXME, 加上这个不行，界面卡住了
+    // this._presentLoading();//open loading...
   }
 
   dismiss() {

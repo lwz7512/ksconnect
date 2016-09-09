@@ -1,8 +1,12 @@
 .about {
   background-color: $ks-background-color;
 
-  ion-slides {
+  ion-slides.banner {
     height: 25%;
+  }
+
+  ion-slides.activity {
+    height: 32%;
   }
 
   ion-col.left {
@@ -33,9 +37,14 @@
   }
 
   .swiper-slide .img img {
-    height: 80px;
+    height: auto;
   }
 
+}
+
+// 幻灯片图片宽度撑满
+.swiper-slide img {
+  width: 100%;
 }
 
 // 按钮里的文字向左对齐
