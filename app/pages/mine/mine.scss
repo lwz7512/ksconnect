@@ -53,14 +53,15 @@
     padding-left: 12px;
   }
 
-  ion-row[top-border] {
-    border-top: 1px solid $ks-background-color;
-  }
 
   .button-icon-only ion-icon {
     font-size: 1.6em;
   }
 
+}
+
+ion-row[top-border] {
+  border-top: 1px solid $ks-background-color;
 }
 
 .left-blue-border {

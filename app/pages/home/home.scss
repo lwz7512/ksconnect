@@ -26,8 +26,20 @@
   margin-top: 4px;
 }
 
+[margin-top-6px] {
+  margin-top: 6px;
+}
+
 [no-roundcorner] {
   border-radius: 0;
+}
+
+[flex-box] {
+  // flexbox
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
 }
 
 [flex-v-center] {
@@ -51,6 +63,7 @@
 [small] {
   font-size: 12px;
 }
+
 
 ion-searchbar {
   background: rgba(0, 0, 0, 0.1);

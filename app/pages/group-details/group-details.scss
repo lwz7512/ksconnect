@@ -1,0 +1,38 @@
+.group-details {
+  background-color: $ks-background-color;
+
+  // 让里面的ion-note对齐顶部
+  ion-card .item .item-inner {
+    font-size: 12px;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+  }
+
+  // 这三组样式，定义按钮条目左边有一个蓝色短线
+  .item.left-short-border {
+    padding: 0px;
+    min-height: 2.6rem;
+    border-bottom: 1px solid #c8c7cc;
+    border-top: none;
+  }
+  .left-short-border ion-label {
+    margin: 6px 8px 7px 16px;
+  }
+  ion-list .item.left-short-border .item-inner {
+    border-left: 2px solid $ks-background-blue;
+    margin: 10px 0 10px 0;
+    border-bottom: none;
+  }
+
+  .item ion-toggle {
+    padding: 1px 8px 0px 16px;
+  }
+  .toggle-icon {
+    height: 28px;
+  }
+  .toggle-inner {
+    height: 23px;
+  }
+
+
+}

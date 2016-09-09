@@ -1,0 +1,10 @@
+.group-members {
+
+  // 列表中的ion-note对齐顶部
+  .item .item-inner {
+    font-size: 12px;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+  }
+
+}

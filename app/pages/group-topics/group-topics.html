@@ -1,0 +1,81 @@
+<!--
+  Generated template for the GroupTopicsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>小组话题</ion-title>
+    <ion-buttons end >
+      <button class="padding-right-10px " (click)="openGroupDetails()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="group-topics">
+
+  <ion-card class="nogap">
+    <ion-card-header flex-v-center>
+      <ion-avatar><img src="img/avatar-ben.png"></ion-avatar>
+      ben
+    </ion-card-header>
+    <ion-card-content (click)="openTopicDetail()">
+      据说淘宝要发布VR购物产品Buy+了，剁手党的福利来了啊，以后更加停不下来了。。。 <a>@cindy</a>
+    </ion-card-content>
+
+    <ion-row center>
+      <ion-col>
+        <img src="img/advance-card-bttf.png" class=" inline"/>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row class=" padding-left-10px padding-right-10px tag">
+      <ion-col class="ks-blue">企业服务</ion-col>
+      <ion-col text-right class="gray-color">3小时前</ion-col>
+    </ion-row>
+
+    <ion-row class="padding-top-1px whitesmoke-bg">
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='star'></ion-icon>12
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='chatbubbles'></ion-icon>12
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='thumbs-up'></ion-icon>10
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='thumbs-down'></ion-icon>9
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- <ion-card class="nogap">
+    <ion-card-header>
+      head
+    </ion-card-header>
+    <ion-card-content>
+      topic content。。。
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>

@@ -25,10 +25,11 @@
     </ion-row>
   </ion-grid> -->
   <ion-list>
-    <button ion-item (click)="goToGroupDetail(group)" *ngFor="let group of groupsArray">
+    <button ion-item (click)="openGroupTopics(group)" *ngFor="let group of groupsArray">
       <smt-img src="{{group.icon}}" item-left></smt-img>
       <h2>{{group.name}}</h2>
-      <p>{{group.members?group.members:'?'}}人</p>
+      <p>{{group.category}}</p>
+      <ion-note item-right>{{group.members?group.members:'x'}}人</ion-note>
     </button>
   </ion-list>
 </ion-content>

@@ -21,7 +21,7 @@
   </ion-card>
   <ion-slides pager [options]="topslides">
 
-    <ion-slide style="background-color: white" *ngFor="let item of top4groups; " >
+    <ion-slide style="background-color: white" *ngFor="let item of top4groups; " (click)="openGroupTopics()">
       <div class="img">
         <smt-img src="{{item.icon}}"></smt-img>
       </div>

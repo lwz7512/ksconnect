@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {SmartImage} from '../../components/smart-image';
+import {GroupTopicsPage} from '../group-topics/group-topics';
+
 
 /*
   Generated class for the PubgroupPage page.
@@ -29,21 +31,13 @@ export class PubgroupPage {
 
     this.groupsArray = this.params.data;
 
-    // let i:any;
-    // let row: any;
-    // for (i in groups) {
-    //   var newrow = i % 4;
-    //   if(i%4 == 0) {
-    //     row = [];
-    //     this.groupsArray.push(row);
-    //   }
-    //   row.push(groups[i]);
-    // }
-    // console.log(this.groupsArray);
+    
   }
 
-  goToGroupDetail(group){
-
+  // 打开小组话题页面
+  openGroupTopics(group){
+    this.navCtrl.push(GroupTopicsPage, group);
   }
+
 
 }

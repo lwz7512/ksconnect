@@ -7,6 +7,8 @@ import {NavController, Platform} from 'ionic-angular';
 import {GroupData} from '../../providers/group-data/group-data';
 import {SmartImage} from '../../components/smart-image';
 import {PubgroupPage} from '../pubgroup/pubgroup';
+import {GroupTopicsPage} from '../group-topics/group-topics';
+
 
 
 @Component({
@@ -38,7 +40,7 @@ export class ContactPage {
 
   ionViewDidEnter(){
     this.groupdata.loadPublicGroups().then(data=>{
-      // console.log(data);
+      console.log(data);
 
       this.pubgroups = data.res.data;
       this.top4groups = data.res.data.slice(0, 4);
@@ -49,6 +51,11 @@ export class ContactPage {
   // 把获取到的公开组送到新页面打开
   openPublicGroups(){
     this.navCtrl.push(PubgroupPage, this.pubgroups);
+  }
+
+  // 打开小组话题页面
+  openGroupTopics(){
+    this.navCtrl.push(GroupTopicsPage);
   }
 
 
