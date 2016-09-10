@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="send-weibo">
   <ion-toolbar>
     <ion-buttons start>
       <button (click)="dismiss()">
@@ -10,12 +10,16 @@
       编辑话题
     </ion-title>
     <ion-buttons end>
-      <button (click)="sendWeibo()">
+      <button *ngIf="isSending">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+      <button (click)="sendWeibo()" [hidden]="isSending">
         <ion-icon name="send"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content >
   <ion-list>
     <!-- <ion-item>

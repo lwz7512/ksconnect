@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
+import {StatusBar, Splashscreen} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 
 import {Host} from './providers/host/host';
@@ -24,6 +24,8 @@ export class MyApp {
       StatusBar.styleDefault();
       // set StatusBar overlay @2016/08/16
       StatusBar.overlaysWebView(true);
+      // 手动隐藏splash @2016/09/10
+      Splashscreen.hide();
     });
   }
 }

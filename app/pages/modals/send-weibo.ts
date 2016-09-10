@@ -21,6 +21,9 @@ export class ModalsContentPage {
   selectedImgs: Array<string> = [];
   // 上传成功后得到的图片地址
   uploadedImgs: any = {};
+  // 发送状态，绑定到窗口的spinner组件 @2016/09/10
+  // 对话框里就不用loading组件了，尽是问题...
+  isSending:boolean = false;
 
   constructor(
       // private platform: Platform,
@@ -36,6 +39,9 @@ export class ModalsContentPage {
 
   sendWeibo() {
     if(!this.weibo.content || !this.weibo.tags) return;
+    // 打开状态开关
+    this.isSending = true;
+
     // 重置
     this.weibo.images = [];
     // 获取上传的图片
@@ -46,24 +52,22 @@ export class ModalsContentPage {
     }
 
     this.cmntdata.sendWeibo(this.weibo).then(data => {
-      console.log(data);
-      // this._dimissLoading();
-      this.dismiss();
+      // console.log(data);
       setTimeout(()=>this._showToast('微博发送成功!'), 500);
 
       // 强制刷新主页
       this.cmntdata.forceToRefresh = true;
+      // 恢复发送状态 @2016/09/10
+      this.isSending = false;
 
-      // TODO, refresh homepage....
-      //
+      this.dismiss();
+
     }, error => {
       console.error(error);
+      this.isSending = false;
       setTimeout(()=>this._showToast('艾玛。。。微博发送失败!'), 500);
-      this._dimissLoading();
       this.dismiss();
     });
-    // FIXME, 加上这个不行，界面卡住了
-    // this._presentLoading();//open loading...
   }
 
   dismiss() {
@@ -123,6 +127,7 @@ export class ModalsContentPage {
     options.saveToPhotoAlbum = true;
 
     Camera.getPicture(options).then((fileURI) => {
+      // alert(fileURI);
       // 从相机插件返回的图片文件格式：file:///var.xxx.......
       // TODO: 要上传图片，然后返回图片URL地址
       let imgPath = fileURI.split(':')[1].substr(2);
@@ -133,10 +138,9 @@ export class ModalsContentPage {
       // 删除第一个
       if(this.selectedImgs.length>3) this.selectedImgs.splice(0,1);
 
-      // TODO， 上传选择的图片，把地址存下来
+      // // TODO， 上传选择的图片，把地址存下来
       this._uploadImage(imgPath);
-      // 貌似没啥用
-      Camera.cleanup();
+
 
     }, (err) => {
      // Handle error
@@ -166,8 +170,7 @@ export class ModalsContentPage {
 
       // TODO， 上传选择的图片，把地址存下来
       this._uploadImage(imgPath);
-      // 貌似没啥用
-      Camera.cleanup();
+
 
     }, (err) => {
      // Handle error
@@ -187,6 +190,8 @@ export class ModalsContentPage {
         // 存起来，发微博用
         this.uploadedImgs[filePath] = upres.res.data[0];
         this._dimissLoading();
+        // 清理拍照缓存
+        Camera.cleanup();
     };
 
     let fail = (error) => {
