@@ -18,7 +18,7 @@ export class ModalsContentPage {
   showFooter: boolean;
 
   // 拍照或者选取的图片组
-  selectedImgs: Array<string> = [];
+  selectedImgs: Array<string> = ['img/plchdr.png','img/plchdr.png','img/plchdr.png'];
   // 上传成功后得到的图片地址
   uploadedImgs: any = {};
   // 发送状态，绑定到窗口的spinner组件 @2016/09/10
@@ -61,6 +61,9 @@ export class ModalsContentPage {
       this.isSending = false;
 
       this.dismiss();
+
+      // 微博发送成功了才能清理缓存 @2016/09/10
+      Camera.cleanup();
 
     }, error => {
       console.error(error);
@@ -161,16 +164,18 @@ export class ModalsContentPage {
       // 从相机插件返回的图片文件格式：file:///var.xxx.......
       // TODO: 要上传图片，然后返回图片URL地址
       let imgPath = fileURI.split(':')[1].substr(2);
+      // 图片路径竟然带问号？@2016/09/10
+      if(imgPath.indexOf('?')>-1){
+        imgPath = imgPath.substr(0,imgPath.indexOf('?'));
+      }
+      // alert(imgPath);
       // 图片路径保存下来准备上传
-      window.localStorage.setItem('_localavatar', imgPath);
-
       this.selectedImgs.push(imgPath);
       // 删除第一个
       if(this.selectedImgs.length>3) this.selectedImgs.splice(0,1);
 
       // TODO， 上传选择的图片，把地址存下来
       this._uploadImage(imgPath);
-
 
     }, (err) => {
      // Handle error
@@ -189,16 +194,19 @@ export class ModalsContentPage {
         // let imgURL = upres.res.data[0].link;
         // 存起来，发微博用
         this.uploadedImgs[filePath] = upres.res.data[0];
+
+        console.log(this.uploadedImgs);
+
         this._dimissLoading();
-        // 清理拍照缓存
-        Camera.cleanup();
+        // FIXME, 不能在这里加清理拍照缓存，否则每次起名都是重复图片 @2016/09/10
+        // Camera.cleanup();
     };
 
     let fail = (error) => {
-        alert("An error has occurred: Code = " + error.code);
+        // alert("An error has occurred: Code = " + error.code);
         console.log("upload error source " + error.source);
         console.log("upload error target " + error.target);
-        alert('图片上传失败: '+error.code);
+        alert('图片上传失败: '+error.code+','+error.source);
         this._dimissLoading();
     };
     // 获取磁盘文件路径

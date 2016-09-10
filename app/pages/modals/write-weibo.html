@@ -42,15 +42,15 @@
   <ion-grid>
     <ion-row >
       <ion-col right>
-        <img [src]="selectedImgs[0]?selectedImgs[0]:'img/plchdr.png'" class="select-img"/>
+        <img [src]="selectedImgs[0]" class="select-img"/>
       </ion-col>
       <ion-col left>
-        <img [src]="selectedImgs[1]?selectedImgs[1]:'img/plchdr.png'" class="select-img"/>
+        <img [src]="selectedImgs[1]" class="select-img"/>
       </ion-col>
     </ion-row>
     <ion-row >
       <ion-col right>
-        <img [src]="selectedImgs[2]?selectedImgs[2]:'img/plchdr.png'" class="select-img"/>
+        <img [src]="selectedImgs[2]" class="select-img"/>
       </ion-col>
       <ion-col left>
         <button outline no-roundcorner class="large-btn" (click)="presentActionSheet()" *ngIf="!selectedImgs[3]">

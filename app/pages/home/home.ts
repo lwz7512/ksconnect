@@ -52,7 +52,7 @@ export class HomePage {
     });
     // 延迟打开，不然没法显示 @2016/09/
     if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
-    
+
   }
 
   openTopicDetail(){
