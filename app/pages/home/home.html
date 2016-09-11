@@ -108,6 +108,36 @@
         <smt-img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" ></smt-img>
       </ion-col>
     </ion-row>
+    <!-- 话题分类、发布时间 -->
+    <ion-row class=" padding-left-10px padding-right-10px tag">
+      <ion-col class="ks-blue">{{weibo.tags}}</ion-col>
+      <ion-col text-right class="gray-color">{{weibo.ctime | relativeTime}}</ion-col>
+    </ion-row>
+    <!-- 卡片footer按钮，及统计数字 -->
+    <ion-row class="padding-top-1px whitesmoke-bg">
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='star'></ion-icon>12
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='chatbubbles'></ion-icon>12
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='thumbs-up'></ion-icon>10
+        </button>
+      </ion-col>
+      <ion-col class="white-bg">
+        <button clear small class="tiny">
+          <ion-icon name='thumbs-down'></ion-icon>9
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 
 

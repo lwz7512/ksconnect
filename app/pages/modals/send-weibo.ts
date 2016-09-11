@@ -48,12 +48,14 @@ export class ModalsContentPage {
     for(let i in this.selectedImgs){
       let localImgFile = this.selectedImgs[i];
       let linkAndId:any = this.uploadedImgs[localImgFile];
+      // FIXME, 图片有可能没选择 @2016/09/11
+      if(!linkAndId) continue;
       this.weibo.images.push(linkAndId);
     }
 
     this.cmntdata.sendWeibo(this.weibo).then(data => {
       // console.log(data);
-      setTimeout(()=>this._showToast('微博发送成功!'), 500);
+      setTimeout(()=>this._showToast('微博发送成功!'), 1000);
 
       // 强制刷新主页
       this.cmntdata.forceToRefresh = true;

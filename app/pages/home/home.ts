@@ -9,14 +9,16 @@ import {CommunityData} from '../../providers/community-data/community-data';
 import {ModalsContentPage} from '../modals/send-weibo';
 
 import {SmartImage} from '../../components/smart-image';
+import {RelativeTime} from '../../pipes/RelativeTime';
 
 @Component({
   directives: [SmartImage],
-  templateUrl: 'build/pages/home/home.html'
+  templateUrl: 'build/pages/home/home.html',
+  pipes: [RelativeTime]
 })
 export class HomePage {
 
-  weibos: any;//绑定到首页卡片
+  weibos: any[];//绑定到首页卡片
   loader: Loading;
 
   constructor(
@@ -25,7 +27,8 @@ export class HomePage {
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private host: Host) {
+    private host: Host
+  ) {
 
     // let innerTxt = "a#b.c#de,f#g-h#....";
     // let converted = innerTxt.replace(/#*#/g, ' ');
