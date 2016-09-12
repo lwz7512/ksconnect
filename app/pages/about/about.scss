@@ -1,73 +1,112 @@
 .about {
-  background-color: $ks-background-color;
+    background-color: $ks-background-color;
 
-  ion-slides.banner {
-    height: 25%;
-  }
+    ion-slides.banner {
+        height: 210px;
+    }
 
-  ion-slides.activity {
-    height: 32%;
-  }
+    ion-slides.activity {
+        height: 200px;
+    }
 
-  ion-col.left {
-    padding: 1px 1px 0 0;
-  }
+    ion-col.left {
+        padding: 1px 1px 0 0;
+    }
 
-  ion-col.right {
-    padding: 1px 0 0 1px;
-  }
+    ion-col.right {
+        padding: 1px 0 0 1px;
+    }
 
-  .swiper-container-horizontal > .swiper-pagination {
-    bottom: 10px;
-  }
+    .ranks{
+        margin-top: 3px;
+        overflow: auto;
+        .left{
+            width: 50%;float: left;
+        }
+        .right{
+            width: 49.5%;float: right;
+        }
+        .rank{
+            background: #FFF;color: #666;
+            height: 45px;line-height: 45px;
+        }
+        .rank:active{
+            background: #CCC;
+        }
+        ion-icon{
+            font-size: 1.6em;margin: 11px 20px 10px 30px;float: left;
+        }
+        .fam{
+            font-size: 1.2em;margin: 14px 20px 10px 30px;float: left;
+        }
+        .z-tip{
+            float: right;margin-right: 25px;
+        }
+        .z-tip-icon{
+            margin-left: 4px;font-size: 1.2em;
+        }
+    }
+    .mt5{margin-top: 5px;}
+    .h30{height: 30px;}
 
-  .button {
-    margin: 1px 0 0 0;
-    font-size: 1.4rem;//相对于根元素
-    height: 3.2em;//相对于父级元素
-  }
+    .swiper-container-horizontal > .swiper-pagination {
+        bottom: 10px;
+    }
 
-  .button-white {
-    color: #444444;
-  }
+    .button {
+        margin: 1px 0 0 0;
+        font-size: 1.4rem;//相对于根元素
+        height: 3.2em;//相对于父级元素
+    }
 
-  .swiper-slide {
-    font-size: 16px;
-    line-height: 1.4;//行高决定幻灯图片与下面的文字距离
-  }
+    .button-white {
+        color: #444444;
+    }
 
-  .swiper-slide .img img {
-    height: auto;
-  }
+    .swiper-slide {
+        font-size: 16px;
+        line-height: 1.4;//行高决定幻灯图片与下面的文字距离
+    }
 
+    .swiper-slide .img img {
+        height: auto;
+    }
+
+}
+
+.z-red{
+    color: #c3001d;
+}
+.z-green{
+    color: #30aa38;
 }
 
 // 幻灯片图片宽度撑满
 .swiper-slide img {
-  width: 100%;
+    width: 100%;
 }
 
 // 按钮里的文字向左对齐
 .left-text > .button-inner {
-  justify-content: flex-start;
-  -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
 }
 // 按钮里的文字向右对齐
 .right-text > .button-inner {
-  justify-content: flex-end;;
-  -webkit-justify-content: flex-end;
+    justify-content: flex-end;;
+    -webkit-justify-content: flex-end;
 }
 
 .justify-content {
-  // flexbox
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
-  display:flex;
-  // 均分处理，两端对齐
-  -webkit-box-pack:justify;
-  -ms-flex-pack:justify;
-  -webkit-justify-content:space-between;
-  justify-content:space-between;
+    // flexbox
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    // 均分处理，两端对齐
+    -webkit-box-pack:justify;
+    -ms-flex-pack:justify;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
 
 }

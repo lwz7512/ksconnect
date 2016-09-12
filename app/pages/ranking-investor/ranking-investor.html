@@ -1,0 +1,118 @@
+<!--
+Generated template for the RankingPage page.
+
+See http://ionicframework.com/docs/v2/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>投资人榜单</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="ranking">
+    <div class="z-segment">
+        <ion-segment [(ngModel)]="rank">
+            <ion-segment-button value="rank_A">
+                约见次数
+            </ion-segment-button>
+            <ion-segment-button value="rank_B">
+                被访次数
+            </ion-segment-button>
+            <ion-segment-button value="rank_C">
+                活跃度
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div class="top10">
+        <span>
+            Top10
+        </span>
+        <a class="right" href="javascript:void(0);">查看我的排名</a>
+    </div>
+
+    <div [ngSwitch]="rank">
+        <ion-list *ngSwitchCase="'rank_A'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks">
+                <div class="rank-left" [ngSwitch]="rank.top" item-left>
+                    <span *ngSwitchCase="1" class="rank-top rank-1">{{rank.top}}</span>
+                    <span *ngSwitchCase="2" class="rank-top rank-2">{{rank.top}}</span>
+                    <span *ngSwitchCase="3" class="rank-top rank-3">{{rank.top}}</span>
+                    <span *ngSwitchDefault class="rank-top rank-o">{{rank.top}}</span>
+                </div>
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'rank_B'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks">
+                <div class="rank-left" [ngSwitch]="rank.top" item-left>
+                    <span *ngSwitchCase="1" class="rank-top rank-1">{{rank.top}}</span>
+                    <span *ngSwitchCase="2" class="rank-top rank-2">{{rank.top}}</span>
+                    <span *ngSwitchCase="3" class="rank-top rank-3">{{rank.top}}</span>
+                    <span *ngSwitchDefault class="rank-top rank-o">{{rank.top}}</span>
+                </div>
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'rank_C'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks">
+                <div class="rank-left" [ngSwitch]="rank.top" item-left>
+                    <span *ngSwitchCase="1" class="rank-top rank-1">{{rank.top}}</span>
+                    <span *ngSwitchCase="2" class="rank-top rank-2">{{rank.top}}</span>
+                    <span *ngSwitchCase="3" class="rank-top rank-3">{{rank.top}}</span>
+                    <span *ngSwitchDefault class="rank-top rank-o">{{rank.top}}</span>
+                </div>
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

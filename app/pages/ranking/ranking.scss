@@ -1,0 +1,72 @@
+.ranking {
+    font-family: Verdana,'Microsoft YaHei',Tahoma,'Simsun',sans-serif;
+    background: #EFEFEF;
+    .z-segment{
+        background: #FFF;
+        ion-segment-button{
+            color:#666;font-size: 1.1em;
+            border-color: #FFF;
+        }
+        .segment-button.activated,.segment-button.segment-activated{
+            border-color: #0081fe;color: #0081fe;
+        }
+    }
+    .top10{
+        margin-top: 10px;background: #FFF;padding: 0 15px;
+        height: 45px;line-height: 45px;
+        span{
+            font-weight: 700;color:#666;
+        }
+        a{color:#f49c4f;text-decoration: none;}
+        .right{
+            float: right;
+        }
+    }
+    [pink]{
+        background: #fbb996;color:#FFF;
+    }
+    .rank-item{padding-left: 0;}
+    .rank-left{width: 85px;}
+    .rank-top{
+        display: inline-block;height: 28px;line-height: 28px;color: #FFF;
+        border-top-right-radius: 14px;border-bottom-right-radius: 14px;
+    }
+    .rank-1{
+        background: #d1004e;padding: 0 15px 0 50px;
+    }
+    .rank-2{
+        background: #f28b2d;padding: 0 15px 0 35px;
+    }
+    .rank-3{
+        background: #ffd022;padding: 0 15px 0 20px;
+    }
+    .rank-o{
+        background: #989898;padding: 0 12px 0 10px;
+    }
+    .rd-content{
+        p{
+            white-space:normal;
+            text-overflow:ellipsis;
+        }
+    }
+
+    .rd-investor{
+        .rdi-avatar{
+            float: left;margin-right: 20px;
+            img{
+                width: 70px;height: 70px;border-radius: 100%;
+            }
+        }
+        .rdi-info{
+            .rdi-title{
+                line-height: 40px;
+                span{
+                    color:#777;font-size: 0.9em;margin-left: 15px;
+                }
+            }
+            .rdi-company{
+                color: #777;font-size: 0.9em;
+            }
+        }
+    }
+}

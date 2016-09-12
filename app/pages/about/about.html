@@ -21,57 +21,43 @@
       <img src="img/slide_3.jpg" class="slide-image"/>
     </ion-slide>
   </ion-slides>
-  <!-- ranks -->
-  <ion-row class="margin-top-2px">
-    <ion-col class="left">
-      <button white full>
-        <ion-icon name="bookmark" primary></ion-icon>创业项目榜单
-      </button>
-    </ion-col>
-    <ion-col class="right">
-      <button white full>
-        <ion-icon name="bookmark" energized></ion-icon>投资人榜单
-      </button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="left">
-      <button white full>
-        <ion-icon name="flame" danger></ion-icon>创业项目推荐
-      </button>
-    </ion-col>
-    <ion-col class="right">
-      <button white full>
-        <ion-icon name="flame" royal></ion-icon>投资人推荐
-      </button>
-    </ion-col>
-  </ion-row>
-  <!-- reports -->
-  <ion-row class="margin-top-4px">
-    <ion-col no-padding>
-      <button white full class="left-text">
-        <ion-icon name="albums" vibrant></ion-icon>行业报告
-      </button>
-    </ion-col>
-    <ion-col no-padding>
-      <button white full class="right-text">
-        N篇行业报告<ion-icon name="arrow-forward"></ion-icon>
-      </button>
-    </ion-col>
-  </ion-row>
-  <!-- activities card-->
-  <ion-row class="margin-top-4px">
-    <ion-col no-padding>
-      <button white full class="left-text">
-        <ion-icon name="beer" secondary></ion-icon>活动
-      </button>
-    </ion-col>
-    <ion-col no-padding>
-      <button white full class="right-text">
-        N个活动<ion-icon name="arrow-forward"></ion-icon>
-      </button>
-    </ion-col>
-  </ion-row>
+
+  <div class="ranks">
+      <div class="rank left" (click)="openRanking()">
+          <ion-icon name="bookmark" primary></ion-icon>创业项目榜单
+      </div>
+      <div class="rank right" (click)="openRankingInvestor()">
+          <ion-icon name="bookmark" energized></ion-icon>投资人榜单
+      </div>
+  </div>
+  <div class="ranks">
+      <div class="rank left">
+          <ion-icon name="flame" danger></ion-icon>创业项目推荐
+      </div>
+      <div class="rank right">
+          <ion-icon name="flame" royal></ion-icon>投资人推荐
+      </div>
+  </div>
+
+  <div class="ranks mt5">
+      <div class="rank">
+          <span class="fam fa fa-file-text z-red"></span>行业报告
+          <div class="z-tip">
+              <span class="z-red">198</span>篇行业报告 <span class="z-tip-icon fa fa-angle-right"></span>
+          </div>
+      </div>
+  </div>
+
+  <div class="ranks mt5">
+      <div class="rank">
+          <ion-icon name="beer" class="z-red" secondary></ion-icon>活动
+          <div class="z-tip">
+              <span class="z-green">24</span>个活动 <span class="z-tip-icon fa fa-angle-right"></span>
+          </div>
+      </div>
+  </div>
+
+
   <!-- 活动幻灯片 -->
   <ion-slides pager class="margin-top-4px activity" [options]="bottomslides">
 
@@ -120,5 +106,7 @@
     </ion-slide>
 
   </ion-slides>
+
+  <div class="h30"></div>
 
 </ion-content>
