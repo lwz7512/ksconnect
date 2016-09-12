@@ -27,7 +27,7 @@ export class CommunityData {
 
   loadWeibo(){
     if (this.data && !this.forceToRefresh) {
-      console.log('>>> use cache data....')
+      // console.log('>>> use cache data....')
       return Promise.resolve(this.data);
     }
     return new Promise(resolve => {
@@ -93,6 +93,30 @@ export class CommunityData {
 
     return new Promise((resolve, reject) => {
       this.http.post(this._hostURL+'/weibo', params, options).subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        var pushresult = res.json();
+        // console.log(pushresult);
+        resolve(pushresult);
+      }, error => {
+        console.error('Ooopse! send failure!');
+        alert(error);
+        // 抛出异常
+        reject(new Error(error));
+      });
+    });
+  }
+
+  // 微博顶，点赞 1, 踩 0
+  digWeibo(wid, status){
+    var params = "wid=" + wid + "&status="+status;
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this._hostURL+'/dig', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         var pushresult = res.json();

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>微博图片</ion-title>
+    <ion-buttons end>
+      <button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="weibo-slides">
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let img of images">
+      <div class="slide-zoom">
+        <!-- <img src="{{img.load_image}}"> -->
+        <smt-img src="{{img.load_image}}"></smt-img>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
