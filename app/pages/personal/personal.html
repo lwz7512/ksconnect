@@ -1,0 +1,136 @@
+<!--
+  Generated template for the PersonalPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人主页</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="personal">
+    <div class="p-info">
+        <div class="pi-avatar">
+            <img src="{{avatar}}" alt="">
+        </div>
+        <div class="tags">
+            <span>投资人</span>
+        </div>
+        <div class="username">
+            {{username}}
+        </div>
+        <div class="description">
+            “作为一个资深审计人员，很开心能加入到这个APP里面，在这里我能找到喜欢的东西，和大家一起互动交流，感觉太好了！”
+        </div>
+    </div>
+
+    <div class="p-content">
+        <ion-list>
+            <ion-item>
+                <div class="pc-item">TA发布的话题 <span class="z-tip-icon fa fa-angle-right"></span></div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-item">投资偏好</div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-like">
+                    <div class="pc-like-t">
+                        医疗健康
+                    </div>
+                    <div class="pc-like-c">
+                        极具发展潜力 / 投资人推荐 / 靠谱项目 / 智能硬件
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-like">
+                    <div class="pc-like-t">
+                        绿色潜能
+                    </div>
+                    <div class="pc-like-c">
+                        极具发展潜力 / 投资人推荐 / 靠谱项目 / 智能硬件
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-like">
+                    <div class="pc-like-t">
+                        投资阶段
+                    </div>
+                    <div class="pc-like-c">
+                        天使轮 / A轮 / B轮 / C轮
+                    </div>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <div class="pc-item">所属机构</div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-company">纪源资本 <span class="z-tip-icon fa fa-angle-right"></span></div>
+            </ion-item>
+
+            <ion-item>
+                <div class="pc-item">投资案例</div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-al">
+                    <div class="avatar">
+                        <img src="img/thumbnail-puppy-1.jpg">
+                        <div>腾讯</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="img/thumbnail-puppy-2.jpg">
+                        <div>优客工厂</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="img/thumbnail-puppy-3.jpg">
+                        <div>我有饭</div>
+                    </div>
+                    <span class="z-tip-icon fa fa-angle-right"></span>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <div class="pc-item">TA加入的团队</div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-al">
+                    <div class="avatar">
+                        <img src="img/thumbnail-kitten-1.jpg">
+                        <div>KPMG-GTM</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="img/thumbnail-kitten-2.jpg">
+                        <div>KPMG-RD</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="img/thumbnail-kitten-3.jpg">
+                        <div>母婴妈妈</div>
+                    </div>
+                    <span class="z-tip-icon fa fa-angle-right"></span>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <div class="pc-item">TA的标签</div>
+            </ion-item>
+            <ion-item>
+                <div class="pc-badge">
+                    <ion-badge>数据分析</ion-badge>
+                    <ion-badge>项目管理</ion-badge>
+                    <ion-badge>咨询</ion-badge>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="meet" (click)="showPrompt()">
+        约 谈
+    </div>
+</ion-content>
