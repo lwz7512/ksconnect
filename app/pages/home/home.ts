@@ -7,6 +7,7 @@ import {Host} from '../../providers/host/host';
 import {TopicDetailPage,} from '../topic-detail/topic-detail';
 import {CommunityData} from '../../providers/community-data/community-data';
 import {ModalsContentPage} from '../modals/send-weibo';
+// import {WeiboImagesPage} from '../modals/weibo-slides';
 
 import {SmartImage} from '../../components/smart-image';
 import {RelativeTime} from '../../pipes/RelativeTime';
@@ -58,15 +59,23 @@ export class HomePage {
 
   }
 
-  openTopicDetail(){
+  // 打开微博详情
+  openTopicDetail(weibo){
     console.log('open details...');
-    this.navCtrl.push(TopicDetailPage);
+    this.navCtrl.push(TopicDetailPage, weibo);
   }
 
-  openModal(characterNum) {
-    let modal = this.modalCtrl.create(ModalsContentPage, characterNum);
+  // 打开微博发送窗口
+  openWeiboModal() {
+    let modal = this.modalCtrl.create(ModalsContentPage);
     modal.present();
   }
+
+  // 打开图片幻灯片
+  // openImgSlides(weibo) {
+  //   let modal = this.modalCtrl.create(WeiboImagesPage, weibo);
+  //   modal.present();
+  // }
 
   presentLoading() {
     this.loader = this.loadingCtrl.create({

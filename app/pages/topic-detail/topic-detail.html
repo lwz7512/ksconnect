@@ -17,49 +17,49 @@
 
 <ion-content >
   <ion-card class="nogap">
-    <ion-card-content (click)="openTopicDetail()">
-      生活在社交网络上的人有多累？随手一张照片好忙碌好久修饰，吃饭不好好吃饭，工作不好好<a>#工作#</a>，
-      真实的一面从未放在网上过，虽然言辞有些<a>#不客气#</a>，但有些网友确实如此。<a>@#社交</a>
+    <ion-card-content>
+      {{weibo.content}}
     </ion-card-content>
     <!-- 话题中的图片，最多显示三个 -->
-    <ion-row center>
+    <ion-row center *ngIf="weibo.images.length" (click)="openImgSlides(weibo)">
       <ion-col>
-        <img src="img/qrcode_100.png" class=" inline"/>
+        <smt-img src="{{weibo.images[0].link}}" ></smt-img>
       </ion-col>
       <ion-col>
-        <img src="img/qrcode_101.png" class=" inline"/>
+        <smt-img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" ></smt-img>
       </ion-col>
       <ion-col>
-        <img src="img/qrcode_102.png" class=" inline"/>
+        <smt-img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" ></smt-img>
       </ion-col>
     </ion-row>
     <!-- 话题分类、发布时间 -->
+    <!-- 话题分类、发布时间 -->
     <ion-row class=" padding-left-10px padding-right-10px tag">
-      <ion-col class="ks-blue">企业服务</ion-col>
-      <ion-col text-right class="gray-color">3小时前</ion-col>
+      <ion-col class="ks-blue">{{weibo.tags}}</ion-col>
+      <ion-col text-right class="gray-color">{{weibo.ctime | relativeTime}}</ion-col>
     </ion-row>
     <!-- 卡片footer按钮，及统计数字 -->
     <ion-row class="padding-top-1px whitesmoke-bg">
-      <ion-col class="white-bg v-right-center tag gray-color" no-padding>来自</ion-col>
-      <ion-col class="white-bg v-center tag ks-blue" no-padding>cindy</ion-col>
-      <ion-col class="white-bg">
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg"></ion-col>
+      <ion-col class="white-bg" right>
         <button clear small class="tiny">
-          <ion-icon name='star'></ion-icon>12
+          <ion-icon name='ios-star-outline'></ion-icon>12
         </button>
       </ion-col>
-      <ion-col class="white-bg">
+      <ion-col class="white-bg" right>
         <button clear small class="tiny">
-          <ion-icon name='chatbubbles'></ion-icon>12
+          <ion-icon name='ios-chatbubbles-outline'></ion-icon>{{weibo.replycount}}
         </button>
       </ion-col>
-      <ion-col class="white-bg">
-        <button clear small class="tiny">
-          <ion-icon name='thumbs-up'></ion-icon>10
+      <ion-col class="white-bg" right padding-right-0>
+        <button clear small class="tiny" margin-right-0 (click)="digup()">
+          <ion-icon name='{{upIconName}}'></ion-icon>{{weibo.dig}}
         </button>
       </ion-col>
-      <ion-col class="white-bg">
-        <button clear small class="tiny">
-          <ion-icon name='thumbs-down'></ion-icon>9
+      <ion-col class="white-bg" padding-left-0>
+        <button clear small class="tiny" margin-left-0 (click)="digdown()">
+          <ion-icon name='{{dnIconName}}'></ion-icon>
         </button>
       </ion-col>
     </ion-row>
