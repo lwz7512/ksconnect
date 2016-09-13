@@ -42,53 +42,6 @@
       </ion-col>
     </ion-row>
   </ion-card>
-  <!-- 话题卡片 -->
-  <!-- <ion-card class="nogap">
-    <ion-card-content (click)="openTopicDetail()">
-      生活在社交网络上的人有多累？随手一张照片好忙碌好久修饰，吃饭不好好吃饭，工作不好好<a>#工作#</a>，
-      真实的一面从未放在网上过，虽然言辞有些<a>#不客气#</a>，但有些网友确实如此。<a>@#社交</a>
-    </ion-card-content>
-    <ion-row center>
-      <ion-col>
-        <img src="img/advance-card-alaska.jpg" class=" inline"/>
-      </ion-col>
-      <ion-col>
-        <img src="img/advance-card-london.jpg" class=" inline"/>
-      </ion-col>
-      <ion-col>
-        <img src="img/advance-card-machu-picchu-1.jpg" class=" inline"/>
-      </ion-col>
-    </ion-row>
-    <ion-row class=" padding-left-10px padding-right-10px tag">
-      <ion-col class="ks-blue">企业服务</ion-col>
-      <ion-col text-right class="gray-color">3小时前</ion-col>
-    </ion-row>
-    <ion-row class="padding-top-1px whitesmoke-bg">
-      <ion-col class="white-bg"></ion-col>
-      <ion-col class="white-bg"></ion-col>
-      <ion-col class="white-bg" right>
-        <button clear small class="tiny">
-          <ion-icon name='star'></ion-icon>12
-        </button>
-      </ion-col>
-      <ion-col class="white-bg" right>
-        <button clear small class="tiny">
-          <ion-icon name='chatbubbles'></ion-icon>12
-        </button>
-      </ion-col>
-      <ion-col class="white-bg" right padding-right-0>
-        <button clear small class="tiny" margin-right-0>
-          <ion-icon name='thumbs-up'></ion-icon>10
-        </button>
-      </ion-col>
-      <ion-col class="white-bg" padding-left-0>
-        <button clear small class="tiny" margin-left-0>
-          <ion-icon name='thumbs-down'></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-card> -->
-
   <!-- 动态卡片 -->
   <ion-card class="nogap" *ngFor="let weibo of weibos" (click)="openTopicDetail(weibo)">
     <ion-card-content>

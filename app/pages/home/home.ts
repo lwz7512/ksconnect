@@ -38,25 +38,25 @@ export class HomePage {
     // console.log(converted);
     let attopic = '...@#some blabla...';
     let convertat = attopic.replace(/@#([^@#]*)\s/g, "<a>@#$1</a>");
-    // console.log(convertat);
+
+    // 打开刷新开关，做一次查询
+    this.cmntdata.forceToRefresh = true;
   }
 
   // 每次进来都要执行
   ionViewDidEnter() {
-    console.log('>>> enter the home view...');
+    // console.log('>>> enter the home view...');
+    // FIXME, 这里加开关控制，不然从详情页面返回首页时报错
+    // @2016/09/13
+    if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
 
+    // 如果发了微博，则刷新
     this.cmntdata.loadWeibo().then(data => {
       // console.log(data.res.data);
       this.weibos = data.res.data;
       // 更新数据后关闭强制刷新
       this.cmntdata.forceToRefresh = false;
-      // 延迟关闭
-      if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
-
     });
-    // 延迟打开，不然没法显示 @2016/09/
-    if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
-
   }
 
   // 打开微博详情

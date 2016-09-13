@@ -8,6 +8,7 @@ import {RelativeTime} from '../../pipes/RelativeTime';
 
 import {CommunityData} from '../../providers/community-data/community-data';
 
+
 /*
   Generated class for the TopicDetailPage page.
 
@@ -23,6 +24,8 @@ export class TopicDetailPage {
 
   // 必须初始化数据，不然模板报错
   weibo:any = {images:[]};
+  // 评论
+  replys:any[] = [];
 
   // down icon name
   dnIconName:string = 'ios-thumbs-down-outline';
@@ -32,6 +35,11 @@ export class TopicDetailPage {
   diguped:boolean;
   digdowned:boolean;
 
+  // 微博评论
+  replyContent:string;
+
+  // 发送状态开关
+  isSending:boolean = false;
 
   constructor(private navCtrl: NavController,
     private modalCtrl: ModalController,
@@ -40,9 +48,29 @@ export class TopicDetailPage {
   ) {}
 
   ionViewDidEnter(){
-    this.weibo = this.params.data;
-    console.log(this.weibo);
+    this._getWeiboDetails();
   }
+
+
+  _getWeiboDetails(){
+    this.weibo = this.params.data;
+    // console.log(this.weibo);
+    this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
+      this.weibo = result.res.data.weibo;
+      // FIXME, 修正没图片的情况
+      if(!this.weibo.images) this.weibo.images = [];
+
+      this.replys = result.res.data.replys;
+    });
+
+  }
+
+  // clear binding data;
+  ionViewWillLeave(){
+    // this.cmnt = null;
+    console.log('detail page leave...');
+  }
+
 
   // 打开图片幻灯片
   openImgSlides(weibo) {
@@ -50,6 +78,7 @@ export class TopicDetailPage {
     modal.present();
   }
 
+  // 点赞
   digup(){
     if(this.diguped) return;
 
@@ -66,6 +95,7 @@ export class TopicDetailPage {
     this.diguped = true;
   }
 
+  // 踩一下
   digdown(){
     if(this.digdowned) return;
 
@@ -79,6 +109,26 @@ export class TopicDetailPage {
     });
     // 重置开关
     this.digdowned = true;
+  }
+
+  // 发送微博评论
+  sendReply(){
+    if(!this.replyContent) return;
+    // console.log('send reply...');
+    this.cmntdata.replyWeibo(this.weibo.id, this.replyContent, null).then(result=>{
+      // TODO: 刷新页面
+      this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
+        this.weibo = result.res.data.weibo;
+        // FIXME, 修正没图片的情况
+        if(!this.weibo.images) this.weibo.images = [];
+
+        this.replys = result.res.data.replys;
+        this.replyContent = null;//clear content
+        this.isSending = false;
+      });
+    });
+    // show loading...
+    this.isSending = true;
   }
 
 

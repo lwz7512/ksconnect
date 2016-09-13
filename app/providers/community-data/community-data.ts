@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 import {Host} from '../host/host';
 
+
 /*
   Generated class for the CommunityData provider.
 
@@ -49,10 +50,6 @@ export class CommunityData {
 
   // 获取首页微博列表
   loadBBS() {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
 
     // let headers = new Headers({ 'X-Requested-With': 'XMLHttpRequest' });
     // let options = new RequestOptions({ headers: headers, method: "get" });
@@ -107,6 +104,24 @@ export class CommunityData {
     });
   }
 
+  // 微博详情
+  getWeiboDetails(wid){
+    // don't have the data yet
+    return new Promise<any>(resolve => {
+      // We're using Angular Http provider to request the data,
+      // then on the response it'll map the JSON data to a parsed JS object.
+      // Next we process the data and resolve the promise with the new data.
+
+      this.http.get(this._hostURL+'/weibo/'+wid).subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        this.data = res.json();
+        // console.log(this.data);
+        resolve(this.data);
+      });
+    });
+  }
+
   // 微博顶，点赞 1, 踩 0
   digWeibo(wid, status){
     var params = "wid=" + wid + "&status="+status;
@@ -117,6 +132,30 @@ export class CommunityData {
 
     return new Promise((resolve, reject) => {
       this.http.post(this._hostURL+'/dig', params, options).subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        var pushresult = res.json();
+        // console.log(pushresult);
+        resolve(pushresult);
+      }, error => {
+        console.error('Ooopse! send failure!');
+        alert(error);
+        // 抛出异常
+        reject(new Error(error));
+      });
+    });
+  }
+
+  // 发送微博评论
+  replyWeibo(wid, content, at){
+    var params = "wid=" + wid + "&content="+content;
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this._hostURL+'/reply', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         var pushresult = res.json();
