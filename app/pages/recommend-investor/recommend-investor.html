@@ -1,0 +1,87 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>投资人推荐</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="ranking recommend">
+    <div class="z-segment">
+        <ion-segment [(ngModel)]="rank">
+            <ion-segment-button value="rank_A">
+                约见次数
+            </ion-segment-button>
+            <ion-segment-button value="rank_B">
+                被访次数
+            </ion-segment-button>
+            <ion-segment-button value="rank_C">
+                活跃度
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="rank">
+        <ion-list *ngSwitchCase="'rank_A'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openPersonalPage(i)">
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'rank_B'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openPersonalPage(i)">
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'rank_C'">
+            <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openPersonalPage(i)">
+                <div class="rank-detail">
+                    <div class="rd-investor">
+                        <div class="rdi-avatar">
+                            <img src="{{rank.avatar}}">
+                        </div>
+                        <div class="rdi-info">
+                            <div class="rdi-title">
+                                {{rank.username}}
+                                <span>{{rank.title}}</span>
+                            </div>
+                            <div class="rdi-company">
+                                {{rank.company}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

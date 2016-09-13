@@ -1,0 +1,78 @@
+.personal {
+    font-family: Verdana,'Microsoft YaHei',Tahoma,'Simsun',sans-serif;
+    .p-info{
+        background: #1593fe;padding: 25px 0;
+        .pi-avatar{
+            text-align: center;
+            img{
+                width: 90px;height: 90px;border-radius: 100%;
+                border: 3px solid #EFEFEF;
+            }
+        }
+        .tags{
+            text-align: center;margin-top: -10px;z-index: 2;
+            span{
+                background: #067bdf;padding: 4px 13px 5px;color: #FFF;
+            }
+        }
+        .username{
+            font-size: 1.2em;color:#FFF;text-align: center;margin-top: 15px;
+        }
+        .description{
+            color: #F2F2F2;margin-top: 15px;padding: 0 50px;line-height: 1.5em;
+        }
+    }
+    .p-content{
+        padding-bottom: 50px;
+        .item{
+            padding-left: 0;
+        }
+        .pc-item{
+            padding-left: 15px;border-left: 2px solid #0086fe;font-size: 1em;
+        }
+        .z-tip-icon{
+            float: right;font-size: 1.3em;color:#0086fe;
+        }
+        .pc-like{
+            padding-left: 15px;
+            .pc-like-t{
+                color: #76c2f8;font-size: 0.9em;
+            }
+            .pc-like-c{
+                color: #666;font-size: 0.9em;line-height: 2em;
+            }
+        }
+        .pc-company{
+            padding-left: 15px;font-size: 0.9em;color: #555;
+        }
+        .pc-al{
+            padding-left: 15px;
+            .avatar{
+                float: left;text-align: center;width: 100px;
+                img{
+                    width: 70px;height: 70px;border-radius: 100%;
+                }
+                div{
+                    font-size: 0.9em;margin-top: 5px;
+                }
+            }
+            .z-tip-icon{
+                line-height: 100px;
+            }
+        }
+        .pc-badge{
+            padding-left: 15px;
+            ion-badge{
+                font-weight: 100;
+            }
+        }
+    }
+
+    .meet{
+        background: #1593fe;color: #FFF;text-align: center;height: 45px;line-height: 45px;font-size: 1.1em;
+        position: fixed;width: 100%;bottom: 0;
+    }
+    .meet:active{
+        background: #43a7fc;
+    }
+}
