@@ -31,7 +31,7 @@ export class CommunityData {
       // console.log('>>> use cache data....')
       return Promise.resolve(this.data);
     }
-    return new Promise(resolve => {
+    return new Promise<any>(resolve => {
 
       this.http.get(this._hostURL+'/weibo').subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
@@ -55,7 +55,7 @@ export class CommunityData {
     // let options = new RequestOptions({ headers: headers, method: "get" });
 
     // don't have the data yet
-    return new Promise(resolve => {
+    return new Promise<any>(resolve => {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
@@ -88,7 +88,7 @@ export class CommunityData {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
 
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http.post(this._hostURL+'/weibo', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
@@ -130,7 +130,7 @@ export class CommunityData {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
 
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http.post(this._hostURL+'/dig', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
@@ -154,7 +154,7 @@ export class CommunityData {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
 
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http.post(this._hostURL+'/reply', params, options).subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference

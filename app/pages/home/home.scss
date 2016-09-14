@@ -227,6 +227,12 @@ img.select-img {
   height: auto;
 }
 
+// 统一设置发送loading颜色为白色 @2016/09/14
+.spinner-dots circle {
+  fill: #fff;
+  stroke-width: 0;
+}
+
 //
 //
 //

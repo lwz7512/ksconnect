@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, NavParams, AlertController } from 'ionic-angular';
 
 import {WeiboImagesPage} from '../modals/weibo-slides';
 
@@ -43,6 +43,7 @@ export class TopicDetailPage {
 
   constructor(private navCtrl: NavController,
     private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
     private params: NavParams,
     private cmntdata: CommunityData
   ) {}
@@ -90,6 +91,10 @@ export class TopicDetailPage {
     // 发送请求
     this.cmntdata.digWeibo(this.weibo.id, 1).then(result=>{
       console.log(result);
+      if(result.meta.code==403){
+        this.showAlert('注意', result.res.tips);
+        this.weibo.dig = parseInt(this.weibo.dig)-1;
+      }
     });
     // 重置开关
     this.diguped = true;
@@ -129,6 +134,15 @@ export class TopicDetailPage {
     });
     // show loading...
     this.isSending = true;
+  }
+
+  showAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['好的']
+    });
+    alert.present();
   }
 
 

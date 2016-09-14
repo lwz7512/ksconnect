@@ -1,14 +1,14 @@
 .topic-detail {
 
-}
-
-.topic-detail-header {
-
-  .spinner-dots circle {
-    fill: #fff;
-    stroke-width: 0;
+  // 列表中的ion-note对齐顶部
+  .item .item-inner {
+    font-size: 12px;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
   }
+
 }
+
 
 .text-input.white-bg {
   background-color: #FFFFFF;

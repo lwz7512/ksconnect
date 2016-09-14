@@ -21,6 +21,8 @@ export class HomePage {
 
   weibos: any[];//绑定到首页卡片
   loader: Loading;
+  // 加载状态开关
+  isSending:boolean = false;
 
   constructor(
     private navCtrl: NavController,
@@ -56,7 +58,11 @@ export class HomePage {
       this.weibos = data.res.data;
       // 更新数据后关闭强制刷新
       this.cmntdata.forceToRefresh = false;
+      // 关闭进度条
+      this.isSending = false;
     });
+    // 打开进度条
+    this.isSending = true;
   }
 
   // 打开微博详情
