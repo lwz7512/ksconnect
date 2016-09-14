@@ -1,0 +1,21 @@
+.report {
+    background: #F4F4F4;
+    font-family: Verdana,'Microsoft YaHei',Tahoma,'Simsun',sans-serif;
+    .report-list{
+        margin-bottom: 10px;
+        ion-card-header{font-weight: 700;font-size: 1.1em;}
+        ion-card-content{}
+        .rl-images{
+            padding: 0 15px;
+        }
+        .rl-tips{
+            border-top: 1px solid #d0cfcf;line-height: 45px;padding: 0 15px;margin-top: 10px;
+            ion-badge{
+                font-weight: 100;
+            }
+            time{
+                float: right;color: #777;font-size: 0.9em;
+            }
+        }
+    }
+}

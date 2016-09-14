@@ -8,6 +8,8 @@ import {WikiData} from '../../providers/wiki-data/wiki-data';
 import {RankingPage} from '../ranking/ranking';
 import {RankingInvestorPage} from '../ranking-investor/ranking-investor';
 import {RecommendInvestorPage} from '../recommend-investor/recommend-investor';
+import {RecommendProjectPage} from '../recommend-project/recommend-project';
+import {ReportPage} from '../report/report';
 
 @Component({
   templateUrl: 'build/pages/about/about.html'
@@ -45,5 +47,14 @@ export class AboutPage {
       console.log('open details...');
       this.navCtrl.push(RecommendInvestorPage);
   }
+
+  openRecommendProject(){
+      this.navCtrl.push(RecommendProjectPage);
+  }
+
+  openReport(){
+      this.navCtrl.push(ReportPage);
+  }
+
 
 }
