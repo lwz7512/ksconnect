@@ -40,7 +40,7 @@
   </div>
 
   <div class="ranks mt5">
-      <div class="rank">
+      <div class="rank" (click)="openReport()">
           <span class="fam fa fa-file-text z-red"></span>行业报告
           <div class="z-tip">
               <span class="z-red">198</span>篇行业报告 <span class="z-tip-icon fa fa-angle-right"></span>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="ranks mt5">
-      <div class="rank">
+      <div class="rank" (click)="openReport()">
           <ion-icon name="beer" class="z-red" secondary></ion-icon>活动
           <div class="z-tip">
               <span class="z-green">24</span>个活动 <span class="z-tip-icon fa fa-angle-right"></span>
@@ -59,7 +59,7 @@
 
 
   <!-- 活动幻灯片 -->
-  <ion-slides pager class="margin-top-4px activity" [options]="bottomslides">
+  <ion-slides pager class="margin-top-4px activity" [options]="bottomslides" (click)="openReport()">
 
     <ion-slide style="background-color: white">
       <div class="img">
