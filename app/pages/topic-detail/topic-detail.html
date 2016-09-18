@@ -71,19 +71,25 @@
   <ion-list>
     <ion-list-header>{{replys.length}}条</ion-list-header>
     <ion-item *ngFor="let reply of replys">
-      <ion-avatar item-left>
+      <ion-avatar item-left (click)="openPersonalPage()">
         <img src="img/avatar-ts-woody.png">
       </ion-avatar>
       <h2>{{reply.fullname}}</h2>
       <p>{{reply.content}}</p>
-      <ion-note item-right>{{reply.ctime | relativeTime}}</ion-note>
+      <!-- <button clear small>回复</button> -->
+      <ion-note item-right>
+        <p>
+          {{reply.ctime | relativeTime}}
+        </p>
+        <button clear item-right (click)="replyTo(reply, replyInput)">回复</button>
+      </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>
 
 <ion-footer primary>
   <ion-toolbar no-border>
-    <ion-input placeholder="发表你的看法" class="white-bg" [(ngModel)]="replyContent"></ion-input>
+    <ion-input #replyInput placeholder="发表你的看法" class="white-bg" [(ngModel)]="replyContent"></ion-input>
     <ion-buttons right>
       <button (click)="sendReply()">
         发言

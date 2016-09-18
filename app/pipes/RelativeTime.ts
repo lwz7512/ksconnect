@@ -38,27 +38,28 @@ export class RelativeTime {
     var elapsed = current - previous;
 
     if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' 秒前';
+      if(Math.round(elapsed/1000)<3) return '刚刚';
+      return Math.round(elapsed/1000) + ' 秒前';
     }
 
     else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' 分前';
+      return Math.round(elapsed/msPerMinute) + ' 分前';
     }
 
     else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' 小时前';
+      return Math.round(elapsed/msPerHour ) + ' 小时前';
     }
 
     else if (elapsed < msPerMonth) {
-        return '大约 ' + Math.round(elapsed/msPerDay) + ' 天前';
+      return '大约 ' + Math.round(elapsed/msPerDay) + ' 天前';
     }
 
     else if (elapsed < msPerYear) {
-        return '大约 ' + Math.round(elapsed/msPerMonth) + ' 月前';
+      return '大约 ' + Math.round(elapsed/msPerMonth) + ' 月前';
     }
 
     else {
-        return '大约 ' + Math.round(elapsed/msPerYear ) + ' 年前';
+      return '大约 ' + Math.round(elapsed/msPerYear ) + ' 年前';
     }
   }
 

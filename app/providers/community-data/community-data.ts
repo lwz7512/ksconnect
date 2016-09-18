@@ -149,6 +149,7 @@ export class CommunityData {
   // 发送微博评论
   replyWeibo(wid, content, at){
     var params = "wid=" + wid + "&content="+content;
+    if(at) params += "&replyto=" + at;
 
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ModalController, NavParams, AlertController, TextInput } from 'ionic-angular';
 
 import {WeiboImagesPage} from '../modals/weibo-slides';
+import {EntrepreneurPage} from '../entrepreneur/entrepreneur';
 
 import {SmartImage} from '../../components/smart-image';
 import {RelativeTime} from '../../pipes/RelativeTime';
@@ -41,7 +42,13 @@ export class TopicDetailPage {
   // 发送状态开关
   isSending:boolean = false;
 
-  constructor(private navCtrl: NavController,
+  // 接受回复的用户编号
+  at:string;
+
+  @ViewChild('replyInput') replyInput: TextInput;
+
+  constructor(
+    private navCtrl: NavController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private params: NavParams,
@@ -50,8 +57,14 @@ export class TopicDetailPage {
 
   ionViewDidEnter(){
     this._getWeiboDetails();
+    // console.log(this.replyInput);
   }
 
+  // TODO, 打开评论用户页面，目前是创业者页面，后面估计要根据用户类型打开对应的模板
+  // @2016/09/18
+  openPersonalPage(){
+    this.navCtrl.push(EntrepreneurPage);
+  }
 
   _getWeiboDetails(){
     this.weibo = this.params.data;
@@ -62,6 +75,7 @@ export class TopicDetailPage {
       if(!this.weibo.images) this.weibo.images = [];
 
       this.replys = result.res.data.replys;
+      console.log(this.replys);
     });
 
   }
@@ -70,6 +84,13 @@ export class TopicDetailPage {
   ionViewWillLeave(){
     // this.cmnt = null;
     console.log('detail page leave...');
+  }
+
+  replyTo(reply, input){
+    //回复用户编号，回复完成后，要清空
+    this.at = reply.uid;
+    this.replyContent = '@'+reply.fullname+' ';
+    input.setFocus();
   }
 
 
@@ -120,7 +141,9 @@ export class TopicDetailPage {
   sendReply(){
     if(!this.replyContent) return;
     // console.log('send reply...');
-    this.cmntdata.replyWeibo(this.weibo.id, this.replyContent, null).then(result=>{
+    this.cmntdata.replyWeibo(this.weibo.id, this.replyContent, this.at).then(result=>{
+      // 每次发送评论后恢复at参数，这样能区分是否是回复某人，还是直接评论
+      this.at = null;
       // TODO: 刷新页面
       this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
         this.weibo = result.res.data.weibo;

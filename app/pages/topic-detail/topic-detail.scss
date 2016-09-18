@@ -7,6 +7,26 @@
     -webkit-align-items: flex-start;
   }
 
+  // 文字过长折行显示
+  .item p {
+    white-space: normal;
+  }
+
+  // ion-note 里面的内容上下排列
+  ion-note {
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+  }
+  ion-note p {
+    color: #aeacb4;
+    flex: 1;
+  }
+  // ion-note中的按钮贴底部对齐
+  .item-button {
+    flex: 1;
+  }
+
 }
 
 

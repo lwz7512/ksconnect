@@ -28,6 +28,10 @@
     position: relative;
     background-color: #25A3FD;
   }
+  // 按钮按下的颜色
+  .button.write-btn.activated {
+    background-color: #3474E1;
+  }
 
   .button.write-btn > .button-inner {
     padding: 0 4px 0 20px;
