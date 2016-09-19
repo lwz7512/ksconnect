@@ -24,7 +24,7 @@ import {CommunityData} from '../../providers/community-data/community-data';
 export class TopicDetailPage {
 
   // 必须初始化数据，不然模板报错
-  weibo:any = {images:[]};
+  weibo:any;
   // 评论
   replys:any[] = [];
 
@@ -53,7 +53,10 @@ export class TopicDetailPage {
     private alertCtrl: AlertController,
     private params: NavParams,
     private cmntdata: CommunityData
-  ) {}
+  ) {
+    // 先初始化数据，比如时间，不然显示: NaN
+    this.weibo = {images:[], ctime: new Date().getTime()/1000};
+  }
 
   ionViewDidEnter(){
     this._getWeiboDetails();
@@ -68,9 +71,9 @@ export class TopicDetailPage {
 
   _getWeiboDetails(){
     this.weibo = this.params.data;
-    // console.log(this.weibo);
     this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
       this.weibo = result.res.data.weibo;
+      console.log(this.weibo);
       // FIXME, 修正没图片的情况
       if(!this.weibo.images) this.weibo.images = [];
 

@@ -74,15 +74,18 @@
       <ion-avatar item-left (click)="openPersonalPage()">
         <img src="img/avatar-ts-woody.png">
       </ion-avatar>
-      <h2>{{reply.fullname}}</h2>
-      <p>{{reply.content}}</p>
-      <!-- <button clear small>回复</button> -->
-      <ion-note item-right>
-        <p>
-          {{reply.ctime | relativeTime}}
-        </p>
-        <button clear item-right (click)="replyTo(reply, replyInput)">回复</button>
-      </ion-note>
+      <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col ><h2>{{reply.fullname}}</h2></ion-col>
+          <ion-col width-33 class="gray tag" right>{{reply.ctime | relativeTime}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-80 wrap>{{reply.content}}</ion-col>
+          <ion-col width-20 flex-v-bottom right>
+            <button clear  (click)="replyTo(reply, replyInput)">回复</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 </ion-content>

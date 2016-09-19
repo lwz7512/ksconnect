@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {NavController, ViewController, ModalController, LoadingController, ToastController, ActionSheetController, Platform, NavParams, Loading} from 'ionic-angular';
+import {NavController, ViewController, ModalController, LoadingController, ToastController, ActionSheetController, AlertController} from 'ionic-angular';
+import { Loading, Platform, NavParams} from 'ionic-angular';
 
 import { Camera, CameraOptions, Transfer, FileUploadOptions } from 'ionic-native';
 
@@ -33,12 +34,17 @@ export class ModalsContentPage {
       private toastCtrl: ToastController,
       private cmntdata: CommunityData,
       private actionSheetCtrl: ActionSheetController,
+      private alertCtrl: AlertController,
       private host: Host
   ) {}
 
 
   sendWeibo() {
-    if(!this.weibo.content || !this.weibo.tags) return;
+    if(!this.weibo.content || !this.weibo.tags) {
+      this._showAlert('内容和标签是必填项!');
+      return;
+    }
+
     // 打开状态开关
     this.isSending = true;
 
@@ -244,6 +250,15 @@ export class ModalsContentPage {
       duration: 2000
     });
     toast.present();
+  }
+
+  _showAlert(message) {
+    let alert = this.alertCtrl.create({
+      title: '注意',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

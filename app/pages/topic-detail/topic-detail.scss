@@ -7,40 +7,37 @@
     -webkit-align-items: flex-start;
   }
 
-  // 文字过长折行显示
-  .item p {
-    white-space: normal;
-  }
-
-  // ion-note 里面的内容上下排列
-  ion-note {
-    flex-direction: column;
-    display: flex;
-    height: 100%;
-  }
-  ion-note p {
+  .gray {
     color: #aeacb4;
-    flex: 1;
-  }
-  // ion-note中的按钮贴底部对齐
-  .item-button {
-    flex: 1;
   }
 
+  // 让评论内容边距消失 ，评论作者、内容、时间、按钮都在这里
+  ion-label {
+    margin: 0;
+  }
+
+  ion-grid.no-padding {
+    padding: 0;
+  }
+  // 相对时间字体变小 ios上可以看出差别
+  .tag {
+    font-size: 1.0rem;
+  }
+
 }
 
 
-.text-input.white-bg {
-  background-color: #FFFFFF;
-}
+// .text-input.white-bg {
+//   background-color: #FFFFFF;
+// }
 
-.v-center {
-  display:-webkit-box;
-  -webkit-box-align:center;
-}
+// .v-center {
+//   display:-webkit-box;
+//   -webkit-box-align:center;
+// }
 
-.v-right-center {
-  display:-webkit-box;
-  -webkit-box-pack:end;
-  -webkit-box-align:center;
-}
+// .v-right-center {
+//   display:-webkit-box;
+//   -webkit-box-pack:end;
+//   -webkit-box-align:center;
+// }

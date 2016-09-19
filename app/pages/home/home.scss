@@ -2,8 +2,16 @@
   color: $ks-background-blue;
 }
 
+[bold] {
+  font-weight: bold;
+}
+
 [white] {
   color: #FFFFFF;
+}
+
+[pink] {
+  color: #FF1493;
 }
 
 [ks-default-text]{
@@ -32,6 +40,10 @@
 
 [margin-left-0] {
   margin-left: 0;
+}
+
+[margin-bottom-10px] {
+  margin-bottom: 10px;
 }
 
 [padding-2px] {
@@ -151,6 +163,12 @@ img.select-img {
 .spinner-dots circle {
   fill: #fff;
   stroke-width: 0;
+}
+
+// 卡片里的图片缩略图高度限制
+ion-col img {
+  max-height: 100px;
+  width: auto;
 }
 
 //

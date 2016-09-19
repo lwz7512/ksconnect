@@ -41,14 +41,16 @@ ion-row[center] ion-col {
 ion-col[left] {
   /* Safari, Chrome, and Opera */
   display:-webkit-box;
-  // 靠左
-  -webkit-box-pack:start;
+  justify-content: flex-start;
+  // the same as above
+  // -webkit-box-pack:start;
 }
 ion-col[right] {
   /* Safari, Chrome, and Opera */
   display:-webkit-box;
-  // 靠右
-  -webkit-box-pack:end;
+  justify-content: flex-end;
+  // the same as above
+  // -webkit-box-pack:end;
 }
 
 
@@ -74,6 +76,20 @@ ion-col[right] {
   align-items: center;
 }
 
+[flex-v-bottom]{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  // works!
+  align-self: flex-end;
+  -webkit-align-self: flex-end;
+}
+
 [small] {
   font-size: 12px;
+}
+
+[wrap] {
+  white-space: normal;
 }

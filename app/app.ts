@@ -7,6 +7,7 @@ import {Host} from './providers/host/host';
 import {CommunityData} from './providers/community-data/community-data';
 import {GroupData} from './providers/group-data/group-data';
 import {WikiData} from './providers/wiki-data/wiki-data';
+import {User} from './providers/user/user';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -32,6 +33,6 @@ export class MyApp {
 
 ionicBootstrap(
   MyApp,
-  [Host, CommunityData, GroupData, WikiData],
-  {tabsPlacement: 'top', backButtonText: '',}
+  [Host, CommunityData, GroupData, WikiData, User],
+  {tabsPlacement: 'top', backButtonText: '', tabsHideOnSubPages:"true"}
 );

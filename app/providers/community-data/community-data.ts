@@ -83,6 +83,8 @@ export class CommunityData {
     for(let i in weibo.images){
       params += "&images["+i+"][id]="+weibo.images[i]['id'];
       params += "&images["+i+"][link]="+weibo.images[i]['link'];
+      // FIXME, 补充大图属性 @2016/09/19
+      params += "&images["+i+"][load_image]="+weibo.images[i]['load_image'];
     }
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
