@@ -27,8 +27,6 @@ export class ModalsContentPage {
   isSending:boolean = false;
 
   constructor(
-      // private platform: Platform,
-      // private params: NavParams,
       private viewCtrl: ViewController,
       private loadingCtrl: LoadingController,
       private toastCtrl: ToastController,

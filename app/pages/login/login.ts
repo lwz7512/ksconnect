@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, LoadingController, Loading, AlertController} from 'ionic-angular';
 
 import {User} from '../../providers/user/user';
 import {TabsPage} from '../../pages/tabs/tabs';
 
 import {BlankPage} from '../blank/blank';
+
+import {Md5} from 'ts-md5/dist/md5';
 
 /*
   Generated class for the LoginPage page.
@@ -17,35 +19,85 @@ import {BlankPage} from '../blank/blank';
 })
 export class LoginPage {
 
-  login: {username?: string, password?: string} = {};
+  // 校验表单用
   submitted = false;
+  login: {username?: string, password?: string} = {};
+  loader: Loading;
 
   constructor(
     private navCtrl: NavController,
     private userData: User,
-    private events: Events
+    private events: Events,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) { }
 
   ionViewWillEnter(){
-    // console.log(this.navCtrl.parent.);
+
   }
 
 
   onLogin(form) {
     this.submitted = true;
 
-    if (form.valid) {
-      this.userData.login(this.login.username);
-      // reload page...
-      this.events.publish('user:login');
+    if(!form.valid) return;
 
+    let md5pswd = Md5.hashStr(this.login.password);
+    console.log(md5pswd);
 
-    }
+    this.userData.login(this.login.username, md5pswd).then(result=>{
+      // console.log(result);
+      this._dimissLoading();
+
+      if(result.meta.code==200){
+        this._closeMe();
+        // TODO, 记录用户资料
+        this.userData.saveUser(result.res.data[0]);
+
+      }else if(result.meta.code==400){
+        let tips = result.res.tips;
+        this._showAlert(tips);
+      }else{
+        this._showAlert('神马情况？');
+      }
+
+    });
+
+    // reload page...
+    // this.events.publish('user:login');
+    this._presentLoading();
 
   }
 
   onSignup() {
 
+  }
+
+  _presentLoading() {
+
+    this.loader = this.loadingCtrl.create({
+      content: "Sending...",
+      // duration: 3000
+    });
+    this.loader.present();
+  }
+
+  _dimissLoading(){
+    if(this.loader) this.loader.dismiss();
+  }
+
+  _showAlert(message) {
+    let alert = this.alertCtrl.create({
+      title: '登录失败',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  // HACK, 因为有loading要关闭，所以这里延迟销毁窗口
+  _closeMe(){
+    setTimeout(()=>{this.navCtrl.pop();}, 500);
   }
 
 }

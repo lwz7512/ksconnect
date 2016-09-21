@@ -1,0 +1,47 @@
+.edit-user {
+
+  // 定义列表底部的横线
+  // ion-list .item .item-inner {
+  //   border-bottom: 1px solid #EEEEEE;
+  // }
+
+  .item .item-inner {
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  [wrap] ion-label {
+    white-space: normal;
+    border-left: none;
+  }
+
+  ion-label {
+    margin: 6px 8px 7px 0;
+    padding-left: 16px;
+    border-left: 2px solid $ks-background-blue;
+  }
+
+  .item {
+    // 去掉左边的空白，默认组件留白16px
+    padding-left: 0;
+
+  }
+
+  .input-wrapper {
+    margin: 6px 0 6px 0px;
+  }
+
+  ion-note.dark {
+    color: #777777;
+    font-size: 14px;
+  }
+
+  ion-list > .item:last-child {
+    border-bottom: 0;
+  }
+  // 标签文字变小点，不然左边文字看不全了
+  ion-badge {
+    font-size: 1rem;
+    margin: 2px;
+  }
+
+}

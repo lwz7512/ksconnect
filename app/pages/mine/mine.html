@@ -30,7 +30,7 @@
       </ion-col>
       <ion-col >
         <ion-avatar >
-          <img [src]="userAvatar">
+          <img [src]="userInfo.middle_face">
         </ion-avatar>
       </ion-col>
       <ion-col >
@@ -45,20 +45,21 @@
     <ion-row center margin-bottom-10px *ngIf="isLogged">
       <ion-col ></ion-col>
       <ion-col >
-        April Zhai
-        <i class="fa fa-venus" pink></i>
+        {{userInfo.fullname}}
+        <i class="fa fa-venus" pink *ngIf="userInfo.sex=='female'"></i>
+        <i class="fa fa-mars" danger *ngIf="userInfo.sex=='male'"></i>
       </ion-col>
       <ion-col ></ion-col>
     </ion-row>
   </ion-grid>
   <!-- 编辑按钮 -->
-  <button round class="write-btn" *ngIf="isLogged">
+  <button round class="write-btn" *ngIf="isLogged" (click)="openEditUser()">
     <ion-icon name="create"></ion-icon>
   </button>
   <!-- 用户简介 -->
   <ion-grid no-padding *ngIf="isLogged">
-    <ion-row class="intro-txt">作为一名资深的设计湿，很开心能加入这个社区里，在这里能找到自己喜欢的东西，和大家一起交流，感觉忒好咧。。。</ion-row>
-    <ion-row>
+    <ion-row class="intro-txt">{{userInfo.description}}</ion-row>
+    <ion-row margin-bottom-10px>
       <ion-col bold class="left-blue-border">公司名称</ion-col>
       <ion-col text-right class="padding-top-0">
         <button small round class="public">公开</button>
@@ -67,7 +68,7 @@
     <ion-row top-border>
       <ion-col class="company-txt">毕马威企业咨询</ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row margin-bottom-10px>
       <ion-col bold class="left-blue-border">技能标签</ion-col>
     </ion-row>
     <ion-row top-border>
@@ -77,17 +78,19 @@
         <button small outline>咨询</button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row margin-bottom-10px>
       <ion-col bold class="left-blue-border">联系方式</ion-col>
       <ion-col text-right class="padding-top-0">
         <button small round class="public">公开</button>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="company-txt">april.zhai@kpmg.cn</ion-col>
+      <ion-col class="company-txt">{{userInfo.uname}}</ion-col>
     </ion-row>
   </ion-grid>
 
-  <button full no-margin>登 录</button>
+  <!-- 非登录状态显示 -->
+  <button full no-margin [hidden]="isLogged" (click)="openLogin()">登 录</button>
+  <button full no-margin secondary [hidden]="isLogged" (click)="openRegister()">注 册</button>
 
 </ion-content>

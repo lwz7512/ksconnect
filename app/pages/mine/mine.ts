@@ -1,7 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import {LoginPage} from '../login/login';
+import {RegisterPage} from '../register/register';
+import {EditUserPage} from '../edit-user/edit-user';
+
 import {User} from '../../providers/user/user';
+
+
+interface UserInfo {
+  uid?: number,
+  email?: string,
+  fullname?: string,
+  middle_face?: string,
+  small_face?: string,
+  name?: string,
+  sex?: string,
+  uname?: string,
+  description?: string
+}
 
 /*
   Generated class for the MinePage page.
@@ -16,11 +33,22 @@ export class MinePage {
 
   // 视图状态绑定开关
   isLogged:boolean;
-  userAvatar:string = "img/avatar_fml.png";
 
-  constructor(private navCtrl: NavController, private userdata:User) {
-    // img/avatar-rey.png
+  // 默认的头像，表示未登录状态
+  userInfo:UserInfo;
+
+
+  constructor(
+    private navCtrl: NavController,
+    private userdata:User
+  ) {
+    // 初始化图片地址，防止出现null的请求
+    this.userInfo = {
+      small_face: "img/avatar_fml.png",
+      middle_face: "img/avatar_fml.png"
+    };
   }
+
 
   ionViewWillEnter(){
     // TODO, 不确定是否已经登录过，所以要动态设置
@@ -31,10 +59,32 @@ export class MinePage {
         this.isLogged = true;
       }
     });
+    // 同时查询 用户信息缓存
+    this.userdata.getLocalUserInfo().then(result=>{
+      if(!result) return;
+      this.userInfo = JSON.parse(result);
+      // console.log(this.userInfo);
+      if(!this.userInfo.description) this.userInfo.description = "用户还没填写资料";
+    });
+
+    console.log('mine page will enter...');
   }
 
+  // TODO, 从远程查询用户资料，用于检查更新
   ionViewDidEnter(){
 
+  }
+
+  openLogin(){
+    this.navCtrl.push(LoginPage);
+  }
+
+  openRegister(){
+    this.navCtrl.push(RegisterPage);
+  }
+
+  openEditUser(){
+    this.navCtrl.push(EditUserPage, this.userInfo);
   }
 
 }

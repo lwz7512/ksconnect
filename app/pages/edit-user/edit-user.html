@@ -1,0 +1,62 @@
+<!--
+  Generated template for the EditUserPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+    <ion-buttons end>
+      <button *ngIf="isSending">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+      <button (click)="sendUserinfo()" [hidden]="isSending">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="edit-user">
+  <ion-list>
+    <ion-item>
+      头像
+      <ion-avatar item-right>
+        <img [src]="userInfo.middle_face">
+      </ion-avatar>
+    </ion-item>
+    <ion-item>
+      昵称
+      <ion-note item-right class="dark">{{userInfo.fullname}}</ion-note>
+    </ion-item>
+    <ion-item>
+      性别
+      <ion-note item-right class="dark">{{userInfo.sex=='male'?'男':'女'}}</ion-note>
+    </ion-item>
+    <ion-item>
+      技能标签
+      <ion-note item-right class="dark">
+        <ion-badge *ngFor="let tag of userInfo.tags">{{tag.tagname}}</ion-badge>
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      公司名称
+      <ion-note item-right class="dark">毕马威企业咨询</ion-note>
+    </ion-item>
+    <ion-item>
+      联系方式
+      <ion-note item-right class="dark">{{userInfo.email}}</ion-note>
+    </ion-item>
+    <ion-item>
+      个性签名
+    </ion-item>
+    <ion-item wrap>
+      <ion-note class="dark">
+        {{userInfo.sign}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

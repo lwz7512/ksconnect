@@ -31,24 +31,24 @@ export class TabsPage {
     this.tab3Root = ContactPage;
     this.tab4Root = MinePage;
 
-    this.events.subscribe('user:login', () => {
-      console.log('>>> received login event...');
-      // 刷新应用...
-    });
+    // this.events.subscribe('user:login', () => {
+    //   console.log('>>> received login event...');
+    //   // 刷新应用...
+    // });
     // console.log('>>> tabs constructed!');
   }
 
   ionViewWillEnter(){
     // console.log('>>> will enter tabs page...');
-    
+
   }
 
   ionViewDidEnter(){
-    console.log('>>> did enter tabs page...')
+    // console.log('>>> did enter tabs page...')
   }
 
   tabChanged(event){
-    console.log('tab changed!');
+    // console.log('tab changed!');
     // console.log(event);
 
   }

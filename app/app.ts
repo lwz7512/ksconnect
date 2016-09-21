@@ -29,6 +29,7 @@ export class MyApp {
       Splashscreen.hide();
     });
   }
+  
 }
 
 ionicBootstrap(
