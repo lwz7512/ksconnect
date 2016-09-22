@@ -1,6 +1,6 @@
 /**
- * 创投圈模块
- */
+* 创投圈模块
+*/
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
@@ -10,51 +10,56 @@ import {RankingInvestorPage} from '../ranking-investor/ranking-investor';
 import {RecommendInvestorPage} from '../recommend-investor/recommend-investor';
 import {RecommendProjectPage} from '../recommend-project/recommend-project';
 import {ReportPage} from '../report/report';
+import {InvestorData} from '../../providers/investor-data/investor-data';
 
 @Component({
-  templateUrl: 'build/pages/about/about.html'
+    templateUrl: 'build/pages/about/about.html'
 })
 export class AboutPage {
 
-  constructor(
-    private navCtrl: NavController,
-    private wikidata: WikiData) {}
+    weibos: any;
 
-  // 幻灯片选项
-  mySlideOptions = {
-    loop: true, pager: true,
-    // autoplay: 2000
-  };
-  // 底部幻灯片选项配置
-  bottomslides = {
-    slidesPerView: 3,spaceBetween: 1
-  };
+    constructor(
+        private navCtrl: NavController,
+        private investordata: InvestorData,
+        private wikidata: WikiData) {}
 
-  // TODO:
-  // declare other public functions...
+        // 幻灯片选项
+        mySlideOptions = {
+            loop: true, pager: true,
+            // autoplay: 2000
+        };
+        // 底部幻灯片选项配置
+        bottomslides = {
+            slidesPerView: 3,spaceBetween: 1
+        };
 
-  openRanking(){
-    console.log('open details...');
-    this.navCtrl.push(RankingPage);
-  }
+        ionViewDidEnter() {
 
-  openRankingInvestor(){
-      console.log('open details...');
-      this.navCtrl.push(RankingInvestorPage);
-  }
+        }
 
-  openRecommendInvestor(){
-      console.log('open details...');
-      this.navCtrl.push(RecommendInvestorPage);
-  }
+        openRanking(){
+            console.log('open details...');
+            this.navCtrl.push(RankingPage);
+        }
 
-  openRecommendProject(){
-      this.navCtrl.push(RecommendProjectPage);
-  }
+        openRankingInvestor(){
+            console.log('open details...');
+            this.navCtrl.push(RankingInvestorPage);
+        }
 
-  openReport(){
-      this.navCtrl.push(ReportPage);
-  }
+        openRecommendInvestor(){
+            console.log('open details...');
+            this.navCtrl.push(RecommendInvestorPage);
+        }
+
+        openRecommendProject(){
+            this.navCtrl.push(RecommendProjectPage);
+        }
+
+        openReport(){
+            this.navCtrl.push(ReportPage);
+        }
 
 
-}
+    }
