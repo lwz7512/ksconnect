@@ -7,6 +7,7 @@ import {Host} from './providers/host/host';
 import {CommunityData} from './providers/community-data/community-data';
 import {GroupData} from './providers/group-data/group-data';
 import {WikiData} from './providers/wiki-data/wiki-data';
+import {InvestorData} from './providers/investor-data/investor-data';
 import {User} from './providers/user/user';
 
 @Component({
@@ -29,11 +30,11 @@ export class MyApp {
       Splashscreen.hide();
     });
   }
-  
+
 }
 
 ionicBootstrap(
   MyApp,
-  [Host, CommunityData, GroupData, WikiData, User],
+  [Host, CommunityData, GroupData, WikiData, User, InvestorData],
   {tabsPlacement: 'top', backButtonText: '', tabsHideOnSubPages:"true"}
 );
