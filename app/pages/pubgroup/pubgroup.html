@@ -14,19 +14,11 @@
 
 
 <ion-content class="pubgroup">
-  <!-- <ion-grid>
-    <ion-row *ngFor="let row of groupsArray">
-      <ion-col width-25 *ngFor="let group of row">
-        <smt-img src="{{group.icon}}"></smt-img>
-        <div class="group-cell-label">
-          {{group.name}}
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> -->
   <ion-list>
     <button ion-item (click)="openGroupTopics(group)" *ngFor="let group of groupsArray">
-      <smt-img src="{{group.icon}}" item-left></smt-img>
+      <ion-avatar item-left>
+        <smt-img src="{{group.icon}}" item-left></smt-img>
+      </ion-avatar>
       <h2>{{group.name}}</h2>
       <p>{{group.category}}</p>
       <ion-note item-right>{{group.count}}人</ion-note>

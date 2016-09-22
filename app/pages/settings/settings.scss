@@ -1,9 +1,4 @@
-.edit-user {
-
-  // 定义列表底部的横线
-  // ion-list .item .item-inner {
-  //   border-bottom: 1px solid #EEEEEE;
-  // }
+.settings {
 
   .item .item-inner {
     border-bottom: 1px solid #EEEEEE;
@@ -37,14 +32,6 @@
 
   ion-list > .item:last-child {
     border-bottom: 0;
-  }
-  // 标签文字变小点，不然左边文字看不全了
-  ion-badge {
-    font-size: 1rem;
-    margin: 2px;
-    background-color: #FFFFFF;
-    color: $ks-text-color;
-    border: 1px solid $ks-background-blue;
   }
 
 }

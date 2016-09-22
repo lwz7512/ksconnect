@@ -62,6 +62,15 @@
     font-size: 1.6em;
   }
 
+  // 标签文字变小点，不然左边文字看不全了
+  ion-badge {
+    font-size: 1rem;
+    margin: 2px;
+    background-color: #FFFFFF;
+    color: $ks-text-color;
+    border: 1px solid $ks-background-blue;
+  }
+
 }
 
 ion-row[top-border] {

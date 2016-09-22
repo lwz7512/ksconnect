@@ -4,7 +4,7 @@
       我的
     </ion-title>
     <ion-buttons end >
-      <button class="padding-right-10px larger">
+      <button class="padding-right-10px larger" (click)="navToSettings()">
         <!-- <ion-icon name="settings"></ion-icon> -->
         <i class="fa fa-cog"></i>
       </button>
@@ -52,13 +52,13 @@
       <ion-col ></ion-col>
     </ion-row>
   </ion-grid>
-  <!-- 编辑按钮 -->
+  <!-- *** 编辑按钮 *** -->
   <button round class="write-btn" *ngIf="isLogged" (click)="openEditUser()">
     <ion-icon name="create"></ion-icon>
   </button>
   <!-- 用户简介 -->
   <ion-grid no-padding *ngIf="isLogged">
-    <ion-row class="intro-txt">{{userInfo.description}}</ion-row>
+    <ion-row class="intro-txt">{{userInfo.sign}}</ion-row>
     <ion-row margin-bottom-10px>
       <ion-col bold class="left-blue-border">公司名称</ion-col>
       <ion-col text-right class="padding-top-0">
@@ -73,9 +73,7 @@
     </ion-row>
     <ion-row top-border>
       <ion-col>
-        <button small outline>数据分析</button>
-        <button small outline>项目管理</button>
-        <button small outline>咨询</button>
+        <ion-badge *ngFor="let tag of userInfo.tags">{{tag.tagname}}</ion-badge>
       </ion-col>
     </ion-row>
     <ion-row margin-bottom-10px>

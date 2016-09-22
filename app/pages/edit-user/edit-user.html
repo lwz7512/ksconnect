@@ -12,9 +12,9 @@
       <button *ngIf="isSending">
         <ion-spinner name="dots"></ion-spinner>
       </button>
-      <button (click)="sendUserinfo()" [hidden]="isSending">
+      <!-- <button (click)="sendUserinfo()" [hidden]="isSending">
         <ion-icon name="send"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 
@@ -22,35 +22,35 @@
 
 <ion-content class="edit-user">
   <ion-list>
-    <ion-item>
+    <ion-item responsible>
       头像
       <ion-avatar item-right>
         <img [src]="userInfo.middle_face">
       </ion-avatar>
     </ion-item>
-    <ion-item>
+    <ion-item responsible (click)="modFullname()">
       昵称
       <ion-note item-right class="dark">{{userInfo.fullname}}</ion-note>
     </ion-item>
-    <ion-item>
+    <ion-item responsible (click)="modSex()">
       性别
       <ion-note item-right class="dark">{{userInfo.sex=='male'?'男':'女'}}</ion-note>
     </ion-item>
-    <ion-item>
+    <ion-item responsible>
       技能标签
       <ion-note item-right class="dark">
         <ion-badge *ngFor="let tag of userInfo.tags">{{tag.tagname}}</ion-badge>
       </ion-note>
     </ion-item>
-    <ion-item>
+    <ion-item responsible>
       公司名称
       <ion-note item-right class="dark">毕马威企业咨询</ion-note>
     </ion-item>
-    <ion-item>
+    <ion-item responsible>
       联系方式
       <ion-note item-right class="dark">{{userInfo.email}}</ion-note>
     </ion-item>
-    <ion-item>
+    <ion-item responsible (click)="modSign()">
       个性签名
     </ion-item>
     <ion-item wrap>

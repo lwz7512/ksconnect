@@ -10,7 +10,7 @@
   }
 
   [item-left] {
-    margin: 4px 8px 4px 0;
+    margin: 8px 8px 8px 0;
   }
 
   ion-label {
@@ -18,13 +18,22 @@
   }
 
   .item {
-    padding-left: 4px;
+    padding-left: 8px;
   }
 
   // 列表中的ion-note
   .item .item-inner {
     font-size: 12px;
 
+  }
+
+  // 头像变小点，不然行高太大
+  ion-avatar img {
+    min-width: 3.0rem;
+    min-height: 3.0rem;
+    max-width: 3.0rem;
+    max-height: 3.0rem;
+    border-radius: 1.5rem;
   }
 
 

@@ -51,7 +51,7 @@ export class LoginPage {
 
       if(result.meta.code==200){
         this._closeMe();
-        // TODO, 记录用户资料
+        // TODO, 本地记录用户资料
         this.userData.saveUser(result.res.data[0]);
 
       }else if(result.meta.code==400){

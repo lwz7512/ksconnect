@@ -29,9 +29,6 @@ export class User {
 
 
   login(username, password) {
-    // this.storage.set(this.HAS_LOGGED_IN, true);
-    // console.log('user: '+username + 'logged!');
-
     var params = "uname=" + username + "&password="+password;
 
     var headers = new Headers();
@@ -52,7 +49,6 @@ export class User {
         reject(new Error(error));
       });
     });
-
   }
 
   // TODO, get user details...
@@ -68,9 +64,30 @@ export class User {
   }
 
   // TODO, send user new info...
-  // http://api.kstartup.cn/updatedetail 参数 fullname,sex,department,email,sign
+  // http://api.kstartup.cn/updatedetail 参数 uid,fullname,sex,department,email,sign
   updateUserInfo(userinfo){
+    var params = "fullname=" + userinfo.fullname + "&sex="+userinfo.sex;
+    params += "&sign="+userinfo.sign + "&department="+userinfo.department;
+    params += "&email="+userinfo.email + "&uid="+userinfo.uid;
 
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(this._hostURL+'/updatedetail', params, options).subscribe(res => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        var pushresult = res.json();
+        // console.log(pushresult);
+        resolve(pushresult);
+      }, error => {
+        console.error('Ooopse! send failure!');
+        alert(error);
+        // 抛出异常
+        reject(new Error(error));
+      });
+    });
   }
 
   hasLoggedIn() {
@@ -90,6 +107,10 @@ export class User {
     });
   }
 
+  logout(){
+    this.storage.remove(this.HAS_LOGGED_IN);
+    this.storage.remove(this.USER_INFO);
+  }
 
 
 }

@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {RegisterPage} from '../register/register';
 import {EditUserPage} from '../edit-user/edit-user';
+import {SettingsPage} from '../settings/settings';
 
 import {User} from '../../providers/user/user';
 
@@ -17,7 +18,8 @@ interface UserInfo {
   name?: string,
   sex?: string,
   uname?: string,
-  description?: string
+  description?: string,
+  sign?:string
 }
 
 /*
@@ -59,12 +61,14 @@ export class MinePage {
         this.isLogged = true;
       }
     });
-    // 同时查询 用户信息缓存
+    // 同时查询用户信息缓存，只从缓存拿数据，不从后台取！
+    // @2016/09/22
     this.userdata.getLocalUserInfo().then(result=>{
+      if(!this.isLogged) return;
       if(!result) return;
       this.userInfo = JSON.parse(result);
       // console.log(this.userInfo);
-      if(!this.userInfo.description) this.userInfo.description = "用户还没填写资料";
+      if(!this.userInfo.sign) this.userInfo.sign = "用户还没填写签名";
     });
 
     console.log('mine page will enter...');
@@ -85,6 +89,10 @@ export class MinePage {
 
   openEditUser(){
     this.navCtrl.push(EditUserPage, this.userInfo);
+  }
+
+  navToSettings(){
+    this.navCtrl.push(SettingsPage);
   }
 
 }
