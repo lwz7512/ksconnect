@@ -73,12 +73,12 @@ export class TopicDetailPage {
     this.weibo = this.params.data;
     this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
       this.weibo = result.res.data.weibo;
-      console.log(this.weibo);
+      // console.log(this.weibo);
       // FIXME, 修正没图片的情况
       if(!this.weibo.images) this.weibo.images = [];
 
       this.replys = result.res.data.replys;
-      console.log(this.replys);
+      // console.log(this.replys);
     });
 
   }
