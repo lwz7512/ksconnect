@@ -11,7 +11,7 @@
       <button *ngIf="isSending">
         <ion-spinner name="dots"></ion-spinner>
       </button>
-      <button class="padding-right-10px larger" [hidden]="isSending">
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="shareTopic()">
         <ion-icon name="share"></ion-icon>
       </button>
     </ion-buttons>
@@ -42,25 +42,27 @@
       <ion-col text-right class="gray-color">{{weibo.ctime | relativeTime}}</ion-col>
     </ion-row>
     <!-- 卡片footer按钮，及统计数字 -->
-    <ion-row class="padding-top-1px whitesmoke-bg">
-      <ion-col class="white-bg"></ion-col>
-      <ion-col class="white-bg"></ion-col>
-      <ion-col class="white-bg" right>
+    <ion-row class="padding-top-1px whitesmoke-bg tag">
+      <ion-col class="white-bg gray-color" flex-v-center right>来自</ion-col>
+      <ion-col class="white-bg" flex-v-center ks-blue padding-left-0 padding-right-0 width-20>
+        {{weibo.fullname}}
+      </ion-col>
+      <ion-col class="white-bg" right >
         <button clear small class="tiny">
           <ion-icon name='ios-star-outline'></ion-icon>12
         </button>
       </ion-col>
-      <ion-col class="white-bg" right>
+      <ion-col class="white-bg" right >
         <button clear small class="tiny">
           <ion-icon name='ios-chatbubbles-outline'></ion-icon>{{weibo.replycount}}
         </button>
       </ion-col>
-      <ion-col class="white-bg" right padding-right-0>
+      <ion-col class="white-bg" right padding-right-0 >
         <button clear small class="tiny" margin-right-0 (click)="digup()">
           <ion-icon name='{{upIconName}}'></ion-icon>{{weibo.dig}}
         </button>
       </ion-col>
-      <ion-col class="white-bg" padding-left-0>
+      <ion-col class="white-bg" padding-left-0 >
         <button clear small class="tiny" margin-left-0 (click)="digdown()">
           <ion-icon name='{{dnIconName}}'></ion-icon>
         </button>
@@ -71,7 +73,7 @@
   <ion-list>
     <ion-list-header>{{replys.length}}条</ion-list-header>
     <ion-item *ngFor="let reply of replys">
-      <ion-avatar item-left (click)="openPersonalPage()">
+      <ion-avatar item-left (click)="openPersonalPage(reply)">
         <img src="img/avatar-ts-woody.png">
       </ion-avatar>
       <ion-grid class="no-padding">

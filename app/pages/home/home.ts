@@ -3,10 +3,11 @@ import {NavController, ViewController, ModalController, LoadingController, Toast
 
 import { Camera, CameraOptions, Transfer, FileUploadOptions } from 'ionic-native';
 
-import {Host} from '../../providers/host/host';
+import {User} from '../../providers/user/user';
 import {TopicDetailPage,} from '../topic-detail/topic-detail';
 import {CommunityData} from '../../providers/community-data/community-data';
 import {ModalsContentPage} from '../modals/send-weibo';
+// 这里没必要打开微博图片幻灯片
 // import {WeiboImagesPage} from '../modals/weibo-slides';
 
 import {SmartImage} from '../../components/smart-image';
@@ -30,7 +31,7 @@ export class HomePage {
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private host: Host
+    private user: User
   ) {
 
     // let innerTxt = "a#b.c#de,f#g-h#....";
@@ -47,7 +48,7 @@ export class HomePage {
 
   // 每次进来都要执行
   ionViewDidEnter() {
-    // console.log('>>> enter the home view...');
+    // console.log('>>> enter the home view...@' + new Date().getTime());
     // FIXME, 这里加开关控制，不然从详情页面返回首页时报错
     // @2016/09/13
     if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
@@ -73,6 +74,12 @@ export class HomePage {
 
   // 打开微博发送窗口
   openWeiboModal() {
+    if(!this.user.getUserObj()){
+      console.log('login first!');
+      // 选中最后一个tab页，引导用户登录 @2016/09/26
+      this.navCtrl.parent.select(3);
+      return;
+    }
     let modal = this.modalCtrl.create(ModalsContentPage);
     modal.present();
   }

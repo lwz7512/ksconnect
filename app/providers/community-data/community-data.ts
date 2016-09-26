@@ -3,6 +3,7 @@ import { Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import {Host} from '../host/host';
+import {User} from '../user/user';
 
 
 /*
@@ -21,10 +22,13 @@ export class CommunityData {
   // 强制更新开关
   forceToRefresh: boolean;
 
-  constructor(private http: Http, private host:Host) {
-    this._hostURL = host.getHostURL();
 
-  }
+  constructor(
+    private http: Http,
+    private host:Host,
+    private user:User //加入用户处理 @2016/09/26
+  ) {this._hostURL = host.getHostURL();}
+
 
   loadWeibo(){
     if (this.data && !this.forceToRefresh) {
@@ -79,6 +83,14 @@ export class CommunityData {
   // 发送微博
   sendWeibo(weibo){
     var params = "content=" + weibo.content + "&tags=" + weibo.tags;
+    // 微博发送必须有用户
+    if(!this.user.getUserObj()){
+      console.log('no user logged in!');
+      return;
+    }
+
+    // TODO, ...add user parameter...
+
     // 图片数组
     for(let i in weibo.images){
       params += "&images["+i+"][id]="+weibo.images[i]['id'];

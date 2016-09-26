@@ -171,6 +171,15 @@ ion-col img {
   width: auto;
 }
 
+// 修改应用默认的 clear 按钮蓝色
+.button-clear {
+  color: $ks-background-blue;
+}
+
+.action-sheet-icon {
+  margin-right: 10px;
+}
+
 //
 //
 //

@@ -24,20 +24,9 @@
     font-size: 1.0rem;
   }
 
+
 }
 
-
-// .text-input.white-bg {
-//   background-color: #FFFFFF;
-// }
-
-// .v-center {
-//   display:-webkit-box;
-//   -webkit-box-align:center;
-// }
-
-// .v-right-center {
-//   display:-webkit-box;
-//   -webkit-box-pack:end;
-//   -webkit-box-align:center;
-// }
+.picker-opt.activated {
+  background: $ks-background-blue;
+}

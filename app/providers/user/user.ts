@@ -20,13 +20,29 @@ export class User {
   storage = new Storage(LocalStorage);
   _hostURL: string;
 
-
+  // 组件初始化得到的用户对象
+  _user:any;
 
   constructor(
     private http: Http,
     private host:Host
-  ) {this._hostURL = host.getHostURL();}
+  ) {
+    this._hostURL = host.getHostURL();
+    this._init();
+    // console.log('user constructor @' + new Date().getTime());
+  }
 
+  // try to get user from LocalStorage @2016/09/26
+  _init(){
+    this.storage.get(this.USER_INFO).then((value) => {
+      console.log('_init user:' + value);
+      this._user = value;
+    });
+  }
+
+  getUserObj(){
+    return this._user;
+  }
 
   login(username, password) {
     var params = "uname=" + username + "&password="+password;

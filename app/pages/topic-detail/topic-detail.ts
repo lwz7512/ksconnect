@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, ModalController, NavParams, AlertController, TextInput } from 'ionic-angular';
+import { NavController, ModalController, NavParams, } from 'ionic-angular';
+import { ActionSheetController, AlertController, TextInput,  } from 'ionic-angular';
 
 import {WeiboImagesPage} from '../modals/weibo-slides';
 import {EntrepreneurPage} from '../entrepreneur/entrepreneur';
@@ -40,7 +41,8 @@ export class TopicDetailPage {
   replyContent:string;
 
   // 发送状态开关
-  isSending:boolean = false;
+  // 默认进来时查询微博详情 显示加载状态 @2016/09/26
+  isSending:boolean = true;
 
   // 接受回复的用户编号
   at:string;
@@ -51,6 +53,7 @@ export class TopicDetailPage {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
+    private actionSheetCtrl: ActionSheetController,
     private params: NavParams,
     private cmntdata: CommunityData
   ) {
@@ -63,9 +66,47 @@ export class TopicDetailPage {
     // console.log(this.replyInput);
   }
 
-  // TODO, 打开评论用户页面，目前是创业者页面，后面估计要根据用户类型打开对应的模板
+  shareTopic(){
+    // console.log('share topic...');
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '分享给',
+      buttons: [
+        {
+          text: '小组',
+          icon: 'people',
+          handler: () => {
+            console.log('share to group');
+          }
+        },{
+          text: '微信',
+          icon: 'chatbubbles',
+          handler: () => {
+            console.log('share to wechat');
+          }
+        },{
+          text: '朋友圈',
+          icon: 'aperture',
+          handler: () => {
+            console.log('share to friends');
+          }
+        },{
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  // TODO, 打开评论用户页面，
+  // 目前是静态的创业者页面，后面估计要根据用户类型打开对应的模板
   // @2016/09/18
-  openPersonalPage(){
+  openPersonalPage(reply){
+    console.log('open: ');
+    console.log(reply);
     this.navCtrl.push(EntrepreneurPage);
   }
 
@@ -79,8 +120,9 @@ export class TopicDetailPage {
 
       this.replys = result.res.data.replys;
       // console.log(this.replys);
+      this.isSending = false;
     });
-
+    this.isSending = true;
   }
 
   // clear binding data;
