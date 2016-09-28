@@ -9,6 +9,7 @@ import {SmartImage} from '../../components/smart-image';
 import {RelativeTime} from '../../pipes/RelativeTime';
 
 import {CommunityData} from '../../providers/community-data/community-data';
+import {Social} from '../../providers/social/social';
 
 
 /*
@@ -47,7 +48,14 @@ export class TopicDetailPage {
   // 接受回复的用户编号
   at:string;
 
+  // TODO:
+  // 默认不是帖子，待后台查出来类型才能判断出来
+  // @2016/09/27
+  isArticle:boolean;
+
+
   @ViewChild('replyInput') replyInput: TextInput;
+
 
   constructor(
     private navCtrl: NavController,
@@ -55,7 +63,8 @@ export class TopicDetailPage {
     private alertCtrl: AlertController,
     private actionSheetCtrl: ActionSheetController,
     private params: NavParams,
-    private cmntdata: CommunityData
+    private cmntdata: CommunityData,
+    private social: Social
   ) {
     // 先初始化数据，比如时间，不然显示: NaN
     this.weibo = {images:[], ctime: new Date().getTime()/1000};
@@ -78,16 +87,23 @@ export class TopicDetailPage {
             console.log('share to group');
           }
         },{
-          text: '微信',
+          text: '微信好友',
           icon: 'chatbubbles',
           handler: () => {
-            console.log('share to wechat');
+            // 四个参数：标题、摘要、文章地址、缩略图地址
+            let title = 'KPMG startup connect v2 is comming...';
+            let description = '文章摘要内容有木有。。。';
+            let articleURL = 'http://kiscp.kstartup.cn/#/detail/1253717';
+            let thumbnailURL = 'http://connect.kstartup.cn/public/images/groupShadow.gif';
+            this.social.share(0, title, description, articleURL, thumbnailURL);
           }
         },{
           text: '朋友圈',
           icon: 'aperture',
           handler: () => {
             console.log('share to friends');
+            // TODO: params ? ...
+            this.social.share(1, '', '', '', '');
           }
         },{
           text: '取消',
@@ -110,6 +126,8 @@ export class TopicDetailPage {
     this.navCtrl.push(EntrepreneurPage);
   }
 
+  // TODO, 获取内容类型，是微博还是帖子
+  // @2016/09/27
   _getWeiboDetails(){
     this.weibo = this.params.data;
     this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
@@ -121,6 +139,10 @@ export class TopicDetailPage {
       this.replys = result.res.data.replys;
       // console.log(this.replys);
       this.isSending = false;
+
+      // TODO, 类型呢？
+      this.isArticle = true;
+
     });
     this.isSending = true;
   }

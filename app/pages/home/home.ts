@@ -53,6 +53,8 @@ export class HomePage {
     // @2016/09/13
     if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
 
+    console.log('load home data...');
+
     // 如果发了微博，则刷新
     this.cmntdata.loadWeibo().then(data => {
       // console.log(data.res.data);

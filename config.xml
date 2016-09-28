@@ -63,6 +63,8 @@
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="SplashScreen" value="screen" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <!-- wechat plugin needed @2016/09/28 -->
+    <preference name="WECHATAPPID" value="wx489ea3096e1cf8fb" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>

@@ -41,7 +41,7 @@ export class SettingsPage {
           text: '确定',
           handler: () => {
             this.userdata.logout();
-            setTimeout(()=>{this.navCtrl.pop()}, 1000);
+            setTimeout(()=>{this.navCtrl.pop()}, 500);
           }
         }
       ]

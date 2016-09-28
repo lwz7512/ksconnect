@@ -11,7 +11,8 @@
       <button *ngIf="isSending">
         <ion-spinner name="dots"></ion-spinner>
       </button>
-      <button class="padding-right-10px larger" [hidden]="isSending" (click)="shareTopic()">
+      <!-- 如果是帖子才能分享，微博不能分享 @2016/09/27 -->
+      <button class="padding-right-10px larger" *ngIf="isArticle" (click)="shareTopic()">
         <ion-icon name="share"></ion-icon>
       </button>
     </ion-buttons>
