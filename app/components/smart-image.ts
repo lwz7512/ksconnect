@@ -4,15 +4,22 @@
  * @description
  * typscript version of smart image with loading and error handling ...
  * inspired by: http://ngmodules.org/modules/angular-img-fallback
- * and used his base64 imag conent, thanks!
+ * and used its base64 imag conent, thanks!
+ *
+ * also Images Lazy Load:
+ * http://framework7.io/docs/lazy-load.html
+ * and used its viewport check method
+ *
  * created @2016/09/07
  *
  * @usage
  *
  * ```html
- * <smt-img src="{{someOBj.url}}" ></smt-img>
+ * <smt-img src="{{someOBj.url}}" lazy></smt-img>
  * ```
- * then included in parent component:
+ * then include this component in parent component:
+ *
+ * import {SmartImage} from '../../components/smart-image';
  *
  * @Component({
  *   directives: [SmartImage],
@@ -30,34 +37,82 @@ import { Component, Input, ElementRef} from '@angular/core';
 })
 export class SmartImage {
 
-  // 成员属性，保存组件参数传来的图片网络地址
-  url = null;
+  // save the image url
+  _imgURL = null;
+  // indicate whether lazy load real image...
+  _delayLoad: boolean;
+
+  _loopChecker: number;
+
+  _fakeImg: HTMLImageElement;
 
   //access tag attribute 'src'
   @Input()
   set src(val: string){
     // console.log('set: '+val);
-    this.url = val;
+    this._imgURL = val;
   }
 
-  constructor(public elm: ElementRef) {}
+  @Input()
+  set lazy(val: string){
+    this._delayLoad = true;
+  }
+
+  constructor(private elm: ElementRef) {}
 
   ngOnInit(): void {
+
     let image = this.elm.nativeElement.children[0];
     let loadingURL = this.getLoadingImg();
-
-    // use inline image instance to preload...
-    let fakeImg = new Image();
-    fakeImg.addEventListener('error', ()=>{
-      image.src = this.getMissingImg();
-    });
-    fakeImg.addEventListener('load', ()=>{
-      image.src = this.url;//load complete
-    });
-    fakeImg.src = this.url;//start loading...
-
     // 先显示加载地址
     image.src = loadingURL;
+
+    // use inline image instance to preload...
+    this._fakeImg = new Image();
+    this._fakeImg.addEventListener('error', ()=>{
+      image.src = this.getMissingImg();
+    });
+    this._fakeImg.addEventListener('load', ()=>{
+      image.src = this._imgURL;//load complete
+    });
+
+    if(this._delayLoad) {
+      // console.log('start lazy loading...');
+      this._startLazyLoadCheck();
+      return;
+    }
+
+    this._fakeImg.src = this._imgURL;//start loading...
+
+  }
+
+  _startLazyLoadCheck(){
+    this._loopChecker = setInterval(()=>{
+
+      let inViewport = this._isElementInViewport(this.elm.nativeElement);
+      if(inViewport){
+        // console.log('image is in viewport...');
+        //start loading...
+        this._fakeImg.src = this._imgURL;
+
+        this._stopLazyLoadCheck();
+      }
+    }, 100);
+  }
+
+  _stopLazyLoadCheck(){
+    clearInterval(this._loopChecker);
+  }
+
+  _isElementInViewport (el) {
+      var rect = el.getBoundingClientRect();
+      var threshold = 0;
+      return (
+        rect.top >= (0 - threshold) &&
+        rect.left >= (0 - threshold) &&
+        rect.top <= (window.innerHeight + threshold) &&
+        rect.left <= (window.innerWidth + threshold)
+      );
   }
 
   getLoadingImg(){

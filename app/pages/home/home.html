@@ -52,13 +52,13 @@
     </ion-card-content>
     <ion-row center *ngIf="weibo.images.length" >
       <ion-col>
-        <smt-img src="{{weibo.images[0].link}}" ></smt-img>
+        <smt-img src="{{weibo.images[0].link}}" lazy></smt-img>
       </ion-col>
       <ion-col>
-        <smt-img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" ></smt-img>
+        <smt-img *ngIf="weibo.images.length>1" src="{{weibo.images[1].link}}" lazy></smt-img>
       </ion-col>
       <ion-col>
-        <smt-img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" ></smt-img>
+        <smt-img *ngIf="weibo.images.length>2" src="{{weibo.images[2].link}}" lazy></smt-img>
       </ion-col>
     </ion-row>
     <!-- 话题分类、发布时间 -->
