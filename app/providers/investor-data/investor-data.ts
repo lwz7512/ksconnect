@@ -15,13 +15,6 @@ export class InvestorData {
         this._hostURL = host.getHostURL();
     }
 
-    loadWiki(){
-        return new Promise(resolve => {
-            this.http.get(this._hostURL+'/wiki?type=3').subscribe(res => {
-                this.data = res.json();
-                resolve(this.data);
-            });
-        });
-    }
+    
 
 }

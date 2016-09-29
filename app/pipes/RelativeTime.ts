@@ -16,6 +16,8 @@ export class RelativeTime {
    */
   transform(value: string, args: any[]) {
     // value = value + ''; // make sure it's a string
+    if(!value) return 'NO_TIME';
+
     let milisecond = parseInt(value)*1000;
     return this.timeDifference(new Date(), new Date(milisecond));
     // return value.toLowerCase();

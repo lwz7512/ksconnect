@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ReportDetailPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{report.title}}</ion-title>
+    <ion-buttons end >
+      <button *ngIf="isSending">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="shareReport()">
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="report-detail">
+  <h3 padding>{{report.title}}</h3>
+  <ion-row class=" padding-left-10px padding-right-10px tag">
+    <ion-col class="ks-blue">{{report.tag}}</ion-col>
+    <ion-col text-right class="gray-color">{{report.createtime | relativeTime}}</ion-col>
+  </ion-row>
+  <p innerHTML="{{details['0'].content}}"></p>
+</ion-content>

@@ -22,6 +22,26 @@ export class WikiData {
     this._hostURL = host.getHostURL();
   }
 
+  // 获取行业报告
+  loadWikiReport(){
+    return new Promise(resolve => {
+      this.http.get(this._hostURL+'/wiki?type=3').subscribe(res => {
+          this.data = res.json();
+          resolve(this.data);
+      });
+    });
+  }
+
+  // 获取报告详情
+  loadReportDetail(w_id){
+    return new Promise<any>(resolve => {
+      this.http.get(this._hostURL+'/getwikibyid?w_id='+w_id).subscribe(res => {
+          this.data = res.json();
+          resolve(this.data);
+      });
+    });
+  }
+
 
 
 }

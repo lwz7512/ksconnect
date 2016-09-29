@@ -70,7 +70,7 @@ export class HomePage {
 
   // 打开微博详情
   openTopicDetail(weibo){
-    console.log('open details...');
+    // console.log('open details...');
     this.navCtrl.push(TopicDetailPage, weibo);
   }
 

@@ -61,5 +61,8 @@ export class AboutPage {
             this.navCtrl.push(ReportPage);
         }
 
+        openEvents(){
+          
+        }
 
     }

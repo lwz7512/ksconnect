@@ -2,6 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Platform } from 'ionic-angular';
+
 import 'rxjs/add/operator/map';
 
 
@@ -25,14 +27,15 @@ export class Social {
   _wxInstalled: boolean;
   _toSharedMessage: WXShareMessage;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private platform: Platform) {
+    console.log(this.platform.platforms());
     this._isInstalled();
   }
 
   // 构造实例时先先检查是否安装微信
   _isInstalled(){
     if(typeof Wechat === 'undefined') {
-      alert('wechat plugin not installed!');
+      console.error('wechat plugin not installed!');
       return;
     }
 

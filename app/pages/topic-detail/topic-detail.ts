@@ -77,44 +77,7 @@ export class TopicDetailPage {
 
   shareTopic(){
     // console.log('share topic...');
-    let actionSheet = this.actionSheetCtrl.create({
-      title: '分享给',
-      buttons: [
-        {
-          text: '小组',
-          icon: 'people',
-          handler: () => {
-            console.log('share to group');
-          }
-        },{
-          text: '微信好友',
-          icon: 'chatbubbles',
-          handler: () => {
-            // 四个参数：标题、摘要、文章地址、缩略图地址
-            let title = 'KPMG startup connect v2 is comming...';
-            let description = '文章摘要内容有木有。。。';
-            let articleURL = 'http://kiscp.kstartup.cn/#/detail/1253717';
-            let thumbnailURL = 'http://connect.kstartup.cn/public/images/groupShadow.gif';
-            this.social.share(0, title, description, articleURL, thumbnailURL);
-          }
-        },{
-          text: '朋友圈',
-          icon: 'aperture',
-          handler: () => {
-            console.log('share to friends');
-            // TODO: params ? ...
-            this.social.share(1, '', '', '', '');
-          }
-        },{
-          text: '取消',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+    
   }
 
   // TODO, 打开评论用户页面，
@@ -150,7 +113,7 @@ export class TopicDetailPage {
   // clear binding data;
   ionViewWillLeave(){
     // this.cmnt = null;
-    console.log('detail page leave...');
+    // console.log('detail page leave...');
   }
 
   replyTo(reply, input){

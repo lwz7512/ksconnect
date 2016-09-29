@@ -1,16 +1,21 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>行业报告</ion-title>
+      <ion-title>行业报告</ion-title>
+      <ion-buttons end >
+        <button *ngIf="isSending">
+          <ion-spinner name="dots"></ion-spinner>
+        </button>
+      </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content class="report">
-    <ion-card *ngFor="let report of reports" class="nogap report-list">
+    <ion-card *ngFor="let report of reports" class="nogap report-list" (click)="navtoReportDetail(report)">
         <ion-card-header>
             {{report.title}}
         </ion-card-header>
         <ion-card-content>
-            {{report.summary}}
+            {{report.summary | summary:50}}
         </ion-card-content>
         <!-- <ion-row class="rl-images">
             <ion-col>
@@ -28,12 +33,12 @@
                 {{report.tag}}
             </ion-badge>
             <time>
-                3小时前
+                {{report.createtime | relativeTime}}
             </time>
         </div>
     </ion-card>
 
-    <ion-card class="nogap report-list">
+    <!-- <ion-card class="nogap report-list">
         <ion-card-header>
             KPMG GTM 大健康活动报告
         </ion-card-header>
@@ -59,6 +64,6 @@
                 3小时前
             </time>
         </div>
-    </ion-card>
+    </ion-card> -->
 
 </ion-content>
