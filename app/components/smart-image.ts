@@ -33,20 +33,26 @@ export class SmartImage {
   // 成员属性，保存组件参数传来的图片网络地址
   url = null;
 
-  // 构造函数，参数可作为注入的组件实例
+  //access tag attribute 'src'
+  @Input()
+  set src(val: string){
+    // console.log('set: '+val);
+    this.url = val;
+  }
+
   constructor(public elm: ElementRef) {}
 
   ngOnInit(): void {
     let image = this.elm.nativeElement.children[0];
     let loadingURL = this.getLoadingImg();
 
-    // 如果出错，修改为原来的图片
+    // use inline image instance to preload...
     let fakeImg = new Image();
     fakeImg.addEventListener('error', ()=>{
       image.src = this.getMissingImg();
     });
     fakeImg.addEventListener('load', ()=>{
-      image.src = this.url;
+      image.src = this.url;//load complete
     });
     fakeImg.src = this.url;//start loading...
 
@@ -68,11 +74,5 @@ export class SmartImage {
     return missingDefault;
   }
 
-  //access tag attribute 'src'
-  @Input()
-  set src(val: string){
-    // console.log('set: '+val);
-    this.url = val;
-  }
 
 }

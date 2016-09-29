@@ -44,10 +44,10 @@ export class LoginPage {
     if(!form.valid) return;
 
     let md5pswd = Md5.hashStr(this.login.password);
-    console.log(md5pswd);
+    // console.log(md5pswd);
 
     this.userData.login(this.login.username, md5pswd).then(result=>{
-      console.log(result);
+      // console.log(result);
       this._dimissLoading();
 
       if(result.meta.code==200){

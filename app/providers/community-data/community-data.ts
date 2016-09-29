@@ -86,7 +86,7 @@ export class CommunityData {
     var params = "content=" + weibo.content + "&tags=" + weibo.tags;
     // 加上用户token
     // @2016/09/28
-    params += "&token" + this.user.getUserToken();
+    params += "&token=" + this.user.getUserToken();
 
     // 微博发送必须有用户
     if(!this.user.getUserObj()){
@@ -146,7 +146,7 @@ export class CommunityData {
 
     // 加上用户token
     // @2016/09/28
-    params += "&token" + this.user.getUserToken();
+    params += "&token=" + this.user.getUserToken();
 
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -175,7 +175,7 @@ export class CommunityData {
 
     // 加上用户token
     // @2016/09/28
-    params += "&token" + this.user.getUserToken();
+    params += "&token=" + this.user.getUserToken();
 
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');

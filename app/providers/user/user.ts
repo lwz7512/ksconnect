@@ -129,10 +129,17 @@ export class User {
     });
   }
 
-  logout(){
+  // 发现token过期的本地处理
+  // 目前是在首页获取列表时，按返回结果判断
+  // @2016/09/29
+  restoreToInstall(){
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove(this.USER_INFO);
     this.storage.remove(this.TOKEN);
+  }
+
+  logout(){
+    this.restoreToInstall();
     // 必须重刷一遍应用，加延时是为了让设置页面关闭
     // @2016/09/28
     setTimeout(()=>{location.reload()}, 1000);

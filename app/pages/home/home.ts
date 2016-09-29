@@ -58,6 +58,14 @@ export class HomePage {
     // 如果发了微博，则刷新
     this.cmntdata.loadWeibo().then(data => {
       // console.log(data.res.data);
+
+      // token expirated @2016/09/29
+      if(data.meta.code == 403){
+        console.log('token timeout, need relogin...');
+        this.user.restoreToInstall();
+        this.navCtrl.parent.select(3);//跳到登录窗口
+      }
+
       this.weibos = data.res.data;
       // 更新数据后关闭强制刷新
       this.cmntdata.forceToRefresh = false;

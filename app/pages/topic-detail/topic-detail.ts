@@ -77,15 +77,15 @@ export class TopicDetailPage {
 
   shareTopic(){
     // console.log('share topic...');
-    
+
   }
 
   // TODO, 打开评论用户页面，
   // 目前是静态的创业者页面，后面估计要根据用户类型打开对应的模板
   // @2016/09/18
   openPersonalPage(reply){
-    console.log('open: ');
-    console.log(reply);
+    // console.log('open: ');
+    // console.log(reply);
     this.navCtrl.push(EntrepreneurPage);
   }
 
@@ -95,11 +95,11 @@ export class TopicDetailPage {
     this.weibo = this.params.data;
     this.cmntdata.getWeiboDetails(this.weibo.id).then(result=>{
       this.weibo = result.res.data.weibo;
-      // console.log(this.weibo);
+      this.replys = result.res.data.replys;
+      // console.log(result.res);
       // FIXME, 修正没图片的情况
       if(!this.weibo.images) this.weibo.images = [];
 
-      this.replys = result.res.data.replys;
       // console.log(this.replys);
       this.isSending = false;
 

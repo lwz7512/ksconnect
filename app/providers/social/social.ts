@@ -28,7 +28,6 @@ export class Social {
   _toSharedMessage: WXShareMessage;
 
   constructor(private http: Http, private platform: Platform) {
-    console.log(this.platform.platforms());
     this._isInstalled();
   }
 

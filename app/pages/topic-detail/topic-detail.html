@@ -75,7 +75,7 @@
     <ion-list-header>{{replys.length}}条</ion-list-header>
     <ion-item *ngFor="let reply of replys">
       <ion-avatar item-left (click)="openPersonalPage(reply)">
-        <img src="img/avatar-ts-woody.png">
+        <img src="{{reply.smallface}}">
       </ion-avatar>
       <ion-grid class="no-padding">
         <ion-row>
