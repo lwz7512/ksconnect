@@ -2,66 +2,88 @@
 
   <ion-navbar>
     <ion-title>创业项目推荐</ion-title>
+    <ion-buttons end >
+      <button *ngIf="isLoading">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content class="ranking recommend">
-    <div class="z-segment">
-        <ion-segment [(ngModel)]="rank">
-            <ion-segment-button value="rank_A">
-                约见次数
-            </ion-segment-button>
-            <ion-segment-button value="rank_B">
-                被访次数
-            </ion-segment-button>
-            <ion-segment-button value="rank_C">
-                SIP测评
-            </ion-segment-button>
-        </ion-segment>
-    </div>
+<ion-content class="ranking recommend projects">
+  <ion-list >
+    <ion-item class="rank-item" *ngFor="let proj of projects" (click)="openProjectPage(proj)">
+      <ion-avatar item-left>
+        <img src="{{proj.img}}">
+      </ion-avatar>
+      <div class="rank-detail">
+        <div class="rd-title">
+          <span>{{proj.title}}</span>
+          <ion-badge item-right pink>{{proj.tag}}</ion-badge>
+        </div>
+        <div class="rd-content">
+          <p>{{proj.summary | summary}}</p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 
-    <div [ngSwitch]="rank">
-        <ion-list *ngSwitchCase="'rank_A'">
-            <ion-item class="rank-item" *ngFor="let rank of rankst">
-                <div class="rank-detail">
-                    <div class="rd-title">
-                        <span>{{rank.name}}</span>
-                        <ion-badge item-right pink>{{rank.rand}}</ion-badge>
-                    </div>
-                    <div class="rd-content">
-                        <p>{{rank.content}}</p>
-                    </div>
-                </div>
-            </ion-item>
-        </ion-list>
+  <!-- <div class="z-segment">
+      <ion-segment [(ngModel)]="rank" (ionChange)="viewByRankType(rank)">
+          <ion-segment-button value="rank_A">
+              约见次数
+          </ion-segment-button>
+          <ion-segment-button value="rank_B">
+              被访次数
+          </ion-segment-button>
+          <ion-segment-button value="rank_C">
+              SIP测评
+          </ion-segment-button>
+      </ion-segment>
+  </div> -->
 
-        <ion-list *ngSwitchCase="'rank_B'">
-            <ion-item class="rank-item" *ngFor="let rank of ranksx">
-                <div class="rank-detail">
-                    <div class="rd-title">
-                        <span>{{rank.name}}</span>
-                        <ion-badge item-right pink>{{rank.rand}}</ion-badge>
-                    </div>
-                    <div class="rd-content">
-                        <p>{{rank.content}}</p>
-                    </div>
-                </div>
-            </ion-item>
-        </ion-list>
+  <!-- <div [ngSwitch]="rank">
+      <ion-list *ngSwitchCase="'rank_A'">
+          <ion-item class="rank-item" *ngFor="let rank of rankst">
+              <div class="rank-detail">
+                  <div class="rd-title">
+                      <span>{{rank.name}}</span>
+                      <ion-badge item-right pink>{{rank.rand}}</ion-badge>
+                  </div>
+                  <div class="rd-content">
+                      <p>{{rank.content}}</p>
+                  </div>
+              </div>
+          </ion-item>
+      </ion-list>
 
-        <ion-list *ngSwitchCase="'rank_C'">
-            <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openProjectPage(i)">
-                <div class="rank-detail">
-                    <div class="rd-title">
-                        <span>{{rank.name}}</span>
-                        <ion-badge item-right pink>{{rank.rand}}</ion-badge>
-                    </div>
-                    <div class="rd-content">
-                        <p>{{rank.content}}</p>
-                    </div>
-                </div>
-            </ion-item>
-        </ion-list>
-    </div>
+      <ion-list *ngSwitchCase="'rank_B'">
+          <ion-item class="rank-item" *ngFor="let rank of ranksx">
+              <div class="rank-detail">
+                  <div class="rd-title">
+                      <span>{{rank.name}}</span>
+                      <ion-badge item-right pink>{{rank.rand}}</ion-badge>
+                  </div>
+                  <div class="rd-content">
+                      <p>{{rank.content}}</p>
+                  </div>
+              </div>
+          </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'rank_C'">
+          <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openProjectPage(i)">
+              <div class="rank-detail">
+                  <div class="rd-title">
+                      <span>{{rank.name}}</span>
+                      <ion-badge item-right pink>{{rank.rand}}</ion-badge>
+                  </div>
+                  <div class="rd-content">
+                      <p>{{rank.content}}</p>
+                  </div>
+              </div>
+          </ion-item>
+      </ion-list>
+  </div> -->
 </ion-content>

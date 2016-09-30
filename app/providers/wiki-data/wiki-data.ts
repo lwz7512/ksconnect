@@ -42,6 +42,15 @@ export class WikiData {
     });
   }
 
+  // 获取推荐项目
+  loadRecommendProjects(){
+    return new Promise<any>(resolve => {
+      this.http.get(this._hostURL+'/wiki?type=2').subscribe(res => {
+          this.data = res.json();
+          resolve(this.data);
+      });
+    });
+  }
 
 
 }

@@ -1,24 +1,34 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams,AlertController  } from 'ionic-angular';
 
+import {WikiData} from '../../providers/wiki-data/wiki-data';
+
+
 @Component({
     templateUrl: 'build/pages/project/project.html',
 })
 export class ProjectPage {
-    project : string;
-    round : string;
 
-    constructor(private navCtrl: NavController,
-        private modalCtrl: ModalController,
-        private alertCtrl: AlertController,
-        private params: NavParams) {
+    project : any = {img:'img/thumbnail-totoro.png'};
+    isLoading: boolean = true;
 
-    }
+    constructor(
+      private navCtrl: NavController,
+      private modalCtrl: ModalController,
+      private alertCtrl: AlertController,
+      private params: NavParams,
+      private wiki: WikiData
+    ) {}
 
     ionViewDidEnter(){
-        console.log(this.params);
-        this.project = this.params.data.name;
-        this.round = this.params.data.rand;
+      this.project = this.params.data;
+      this.wiki.loadReportDetail(this.project.id).then(data => {
+        // console.log(data);
+
+        this.project.content = data.res.data['0'].content;
+
+        this.isLoading = false;
+      });
     }
 
     showPrompt() {

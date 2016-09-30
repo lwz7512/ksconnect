@@ -1,6 +1,11 @@
 <ion-header>
     <ion-navbar>
     <ion-title>项目信息</ion-title>
+    <ion-buttons end >
+      <button *ngIf="isLoading">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+    </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -8,13 +13,13 @@
 <ion-content class="personal project">
     <div class="p-info">
         <div class="pi-avatar">
-            <img src="img/thumbnail-totoro.png" alt="">
+            <img src="{{project.img}}" alt="">
         </div>
         <div class="tags">
-            <span>{{round}}</span>
+            <span>{{project.tag}}</span>
         </div>
         <div class="username">
-            {{project}}
+            {{project.title}}
         </div>
         <div class="description"></div>
     </div>
@@ -25,13 +30,15 @@
                 <div class="pc-item">项目简介</div>
             </ion-item>
             <ion-item>
-                <div class="pc-company auto-break">聊天机器人 (bot) 是当下即时通讯类 App 的附属品，也是当今商业领域的宠儿。不必再切换到各个具体的 App。用户目前可以通过即时信息订购披萨或鲜花，并且，有许多新的品牌正在加入到 App 中来。</div>
-                <div class="pc-images">
+                <div class="pc-company auto-break" [innerHTML]="project.content">
+
+                </div>
+                <!-- <div class="pc-images">
                     <img src="img/thumbnail-totoro.png" alt="">
                     <img src="img/thumbnail-puppy-4.jpg" alt="">
                     <img src="img/thumbnail-puppy-3.jpg" alt="">
                     <img src="img/thumbnail-puppy-2.jpg" alt="">
-                </div>
+                </div> -->
             </ion-item>
             <ion-item>
                 <div class="pc-item">行业领域</div>

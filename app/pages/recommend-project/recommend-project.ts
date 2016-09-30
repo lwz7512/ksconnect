@@ -2,56 +2,45 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {ProjectPage} from '../project/project';
 
+import {WikiData} from '../../providers/wiki-data/wiki-data';
+import {Summary} from '../../pipes/summary';
+
 @Component({
   templateUrl: 'build/pages/recommend-project/recommend-project.html',
+  pipes: [Summary]
 })
 export class RecommendProjectPage {
-    rank: string = "rank_C";
-    ranks : any[] = [
-        {top:1,name:'雪瓣',rand:'Pre-A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:2,name:'EMGRehab',rand:'A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:3,name:'CoffeeBar',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:4,name:'斯凯智能',rand:'B轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:5,name:'快投Qcast',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:6,name:'蜂巢天下',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:7,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:8,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:9,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:10,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-    ];
-    rankst : any[] = [
-        {top:1,name:'EMGRehab',rand:'A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:2,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:3,name:'雪瓣',rand:'Pre-A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:4,name:'斯凯智能',rand:'B轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:5,name:'CoffeeBar',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:6,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:7,name:'蜂巢天下',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:8,name:'快投Qcast',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:9,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:10,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-    ];
-    ranksx : any[] = [
-        {top:1,name:'斯凯智能',rand:'B轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:2,name:'雪瓣',rand:'Pre-A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:3,name:'EMGRehab',rand:'A轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:4,name:'CoffeeBar',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:5,name:'快投Qcast',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:6,name:'蜂巢天下',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:7,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:8,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:9,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-        {top:10,name:'斯凯智能',rand:'天使轮',content:'Badges are small that typically communicate a numerical value to the user.'},
-    ];
-    constructor(
-        private navCtrl: NavController
-    ) {}
 
-    openProjectPage(i){
-        console.log(i);
-        var pro = this.ranks[i];
-        this.navCtrl.push(ProjectPage,pro);
+    rank: string = "rank_C";
+    ranks : any[] = [];
+    rankst : any[] = [];
+    ranksx : any[] = [];
+
+    isLoading: boolean;
+    projects: any[] = [];
+
+    constructor(
+      private navCtrl: NavController,
+      private wiki: WikiData
+    ) {
+      this.isLoading = true;
     }
 
-    
+    ionViewDidEnter(){
+      this.wiki.loadRecommendProjects().then(data => {
+        // console.log(data);
+        this.projects = data.res.data;
+        this.isLoading = false;
+      });
+    }
+
+    openProjectPage(project){
+      // console.log(project);
+      this.navCtrl.push(ProjectPage, project);
+    }
+
+    viewByRankType(rank){
+      console.log(rank);
+    }
+
 }
