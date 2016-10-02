@@ -1,7 +1,8 @@
 .personal {
-    font-family: Verdana,'Microsoft YaHei',Tahoma,'Simsun',sans-serif;
+    // font-family: Verdana,'Microsoft YaHei',Tahoma,'Simsun',sans-serif;
     .p-info{
-        background: #1593fe;padding: 25px 0;
+        background: #2496FC;
+        padding: 25px 0;
         .pi-avatar{
             text-align: center;
             img{
@@ -12,7 +13,8 @@
         .tags{
             text-align: center;margin-top: -10px;z-index: 2;
             span{
-                background: #067bdf;padding: 4px 13px 5px;color: #FFF;
+                background: #28CCE0;padding: 4px 13px 5px;color: #FFF;
+                // background: #067bdf;padding: 4px 13px 5px;color: #FFF;
             }
         }
         .username{

@@ -29,6 +29,7 @@
  *
  */
 import { Component, Input, ElementRef} from '@angular/core';
+import {Events} from 'ionic-angular';
 
 @Component({
     // 用类似jq的selector来查找dom中的元素，并添加行为到它上面
@@ -42,7 +43,7 @@ export class SmartImage {
   // indicate whether lazy load real image...
   _delayLoad: boolean;
 
-  _loopChecker: number;
+  _loopChecker: boolean;
 
   _fakeImg: HTMLImageElement;
 
@@ -58,7 +59,7 @@ export class SmartImage {
     this._delayLoad = true;
   }
 
-  constructor(private elm: ElementRef) {}
+  constructor(private elm: ElementRef, private events:Events) {}
 
   ngOnInit(): void {
 
@@ -86,26 +87,33 @@ export class SmartImage {
 
   }
 
-  ngOnDestroy():void{
-    if(this._loopChecker) clearInterval(this._loopChecker);
+  // callback by SmartImageController
+  // @2016/10/01
+  scrollNotify(){
+    if(this._loopChecker) return;
+    if(!this._delayLoad) return;
+
+    let inViewport = this._isElementInViewport(this.elm.nativeElement);
+    if(inViewport){
+      //start loading...
+      this._fakeImg.src = this._imgURL;
+
+      this._stopLazyLoadCheck();
+    }
   }
 
+  // nothing to do
+  ngOnDestroy():void{
+
+  }
+
+  // register this image to controller;
   _startLazyLoadCheck(){
-    this._loopChecker = setInterval(()=>{
-
-      let inViewport = this._isElementInViewport(this.elm.nativeElement);
-      if(inViewport){
-        // console.log('image is in viewport...');
-        //start loading...
-        this._fakeImg.src = this._imgURL;
-
-        this._stopLazyLoadCheck();
-      }
-    }, 100);
+    this.events.publish('smtImg', this);
   }
 
   _stopLazyLoadCheck(){
-    clearInterval(this._loopChecker);
+    this._loopChecker = true;
   }
 
   _isElementInViewport (el) {

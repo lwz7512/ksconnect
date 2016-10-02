@@ -11,6 +11,8 @@ import {InvestorData} from './providers/investor-data/investor-data';
 import {User} from './providers/user/user';
 import {Social} from './providers/social/social';
 
+import {SmartImageController} from './components/smtimg-ctrlr';
+
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
@@ -36,6 +38,6 @@ export class MyApp {
 
 ionicBootstrap(
   MyApp,
-  [Host, CommunityData, GroupData, WikiData, User, InvestorData, Social],
+  [Host, CommunityData, GroupData, WikiData, User, InvestorData, Social, SmartImageController],
   {tabsPlacement: 'top', backButtonText: '', tabsHideOnSubPages:"true"}
 );

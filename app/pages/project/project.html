@@ -1,76 +1,72 @@
-<ion-header>
+<ion-header class="project-header">
     <ion-navbar>
-    <ion-title>项目信息</ion-title>
+    <ion-title></ion-title>
     <ion-buttons end >
       <button *ngIf="isLoading">
         <ion-spinner name="dots"></ion-spinner>
+      </button>
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="openWeiboModal()">
+        <i class="fa fa-star-o" aria-hidden="true"></i>
       </button>
     </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-
+<!-- 这里用personal.scss定义的样式 -->
 <ion-content class="personal project">
-    <div class="p-info">
-        <div class="pi-avatar">
-            <img src="{{project.img}}" alt="">
-        </div>
-        <div class="tags">
-            <span>{{project.tag}}</span>
-        </div>
-        <div class="username">
-            {{project.title}}
-        </div>
-        <div class="description"></div>
+  <div class="p-info">
+    <div class="pi-avatar">
+      <img src="{{project.img}}" alt="">
     </div>
-
-    <div class="p-content">
-        <ion-list>
-            <ion-item>
-                <div class="pc-item">项目简介</div>
-            </ion-item>
-            <ion-item>
-                <div class="pc-company auto-break" [innerHTML]="project.content">
-
-                </div>
-                <!-- <div class="pc-images">
-                    <img src="img/thumbnail-totoro.png" alt="">
-                    <img src="img/thumbnail-puppy-4.jpg" alt="">
-                    <img src="img/thumbnail-puppy-3.jpg" alt="">
-                    <img src="img/thumbnail-puppy-2.jpg" alt="">
-                </div> -->
-            </ion-item>
-            <ion-item>
-                <div class="pc-item">行业领域</div>
-            </ion-item>
-            <ion-item>
-                <div class="pc-like">
-                    <div class="pc-like-t">
-                        医疗健康
-                    </div>
-                    <div class="pc-like-c">
-                        极具发展潜力 / 投资人推荐 / 靠谱项目 / 智能硬件
-                    </div>
-                </div>
-            </ion-item>
-
-            <ion-item>
-                <div class="pc-item">项目进展</div>
-            </ion-item>
-            <ion-item>
-                <div class="pc-company auto-break">聊天机器人 (bot) 是当下即时通讯类 App 的附属品，也是当今商业领域的宠儿。它将人工智能与即时信息会话...</div>
-            </ion-item>
-
-        </ion-list>
+    <div class="tags">
+      <span>{{project.tag}}</span>
     </div>
+    <div class="username">
+      {{project.title}}
+    </div>
+  </div>
+  <div class="description ellipse"></div>
 
-    <!-- <div class="meet" (click)="showPrompt()">
-        约 谈
-    </div> -->
+  <div class="p-content">
+    <ion-list>
+      <ion-item>
+        <div class="pc-item">项目简介</div>
+      </ion-item>
+      <ion-item>
+        <div class="pc-company auto-break" [innerHTML]="project.content"></div>
+      </ion-item>
+      <ion-item>
+          <div class="pc-item">评估结果</div>
+      </ion-item>
+      <ion-item>
+          <button full light large>该项目还未进行SIP测评</button>
+      </ion-item>
+      <ion-item>
+        <div class="pc-item">行业领域</div>
+      </ion-item>
+      <ion-item>
+        <div class="pc-like">
+          <div class="pc-like-t">
+              医疗健康
+          </div>
+          <div class="pc-like-c">
+              极具发展潜力 / 投资人推荐 / 靠谱项目 / 智能硬件
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <div class="pc-item">项目进展</div>
+      </ion-item>
+      <ion-item>
+        <div class="pc-company auto-break">聊天机器人 (bot) 是当下即时通讯类 App 的附属品，也是当今商业领域的宠儿。它将人工智能与即时信息会话...</div>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
-
+<!-- 屏幕底部按钮只能放这不然IOS下固定不了位置 -->
 <ion-footer>
-    <button full no-margin (click)="showPrompt()">
-        约 谈
-    </button>
+  <button full no-margin (click)="showPrompt()" class="kpmg-btn">
+      约 谈
+  </button>
 </ion-footer>

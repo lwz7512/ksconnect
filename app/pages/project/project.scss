@@ -1,3 +1,12 @@
+.project-header {
+
+  .toolbar-background {
+    border-color: #2496FC;
+    background: #2496FC;
+  }
+
+}
+
 .project {
     .auto-break{
         white-space: normal;
@@ -9,4 +18,36 @@
             width: 23%;
         }
     }
+
+    .ellipse {
+      left: -5%;
+      top: -15px;
+      position: relative;
+    	width: 110%;
+    	height: 50px;
+    	background: #2496FC;
+    	// background-color: #0ff;
+    	-webkit-clip-path: ellipse(50% 50% at 50% 50%);
+      clip-path: ellipse(50% 60% at 50% 50%);
+    }
+
+    ion-list > .item:first-child {
+      border-top: none;
+    }
+
+    .button-full {
+      margin-left: 16px;
+      font-size: 1.6rem;
+      color: #999;
+    }
+
+}
+
+
+// 应用全局定义，KP风格的底部按钮 @2016/10/02
+ion-footer .button.kpmg-btn {
+  background-color: $toolbar-background;
+}
+ion-footer .button.kpmg-btn.activated {
+  background-color: #3474e1;
 }

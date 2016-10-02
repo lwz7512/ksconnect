@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavController, ViewController, ModalController, LoadingController, ToastController, ActionSheetController, Platform, NavParams, Loading} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {NavController, ViewController, ModalController, Content, Events} from 'ionic-angular';
 
 import { Camera, CameraOptions, Transfer, FileUploadOptions } from 'ionic-native';
 
@@ -12,6 +12,7 @@ import {ModalsContentPage} from '../modals/send-weibo';
 
 import {SmartImage} from '../../components/smart-image';
 import {RelativeTime} from '../../pipes/RelativeTime';
+import {SmartImageController} from '../../components/smtimg-ctrlr';
 
 @Component({
   directives: [SmartImage],
@@ -21,17 +22,21 @@ import {RelativeTime} from '../../pipes/RelativeTime';
 export class HomePage {
 
   weibos: any[];//绑定到首页卡片
-  loader: Loading;
   // 加载状态开关
   isSending:boolean = false;
+
+  @ViewChild(Content)
+  content:Content;
+
+  smtImages: SmartImage[] = [];
 
   constructor(
     private navCtrl: NavController,
     private cmntdata: CommunityData,
     private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController,
-    private user: User
+    private user: User,
+    private events: Events,
+    private smtCtrl: SmartImageController
   ) {
 
     // let innerTxt = "a#b.c#de,f#g-h#....";
@@ -46,6 +51,14 @@ export class HomePage {
     this.cmntdata.forceToRefresh = true;
   }
 
+  ngAfterViewInit() {
+
+    this.smtCtrl.iniLazyLoad(this.content);
+
+  }
+
+
+
   // 每次进来都要执行
   ionViewDidEnter() {
     // console.log('>>> enter the home view...@' + new Date().getTime());
@@ -53,7 +66,7 @@ export class HomePage {
     // @2016/09/13
     if(!this.cmntdata.forceToRefresh) return;// 依据开关刷新
 
-    console.log('load home data...');
+    // console.log('load home data...');
 
     // 如果发了微博，则刷新
     this.cmntdata.loadWeibo().then(data => {
@@ -100,12 +113,16 @@ export class HomePage {
   //   modal.present();
   // }
 
-  presentLoading() {
-    this.loader = this.loadingCtrl.create({
-      content: "loading...",
-      // duration: 3000
-    });
-    this.loader.present();
+  // presentLoading() {
+  //   this.loader = this.loadingCtrl.create({
+  //     content: "loading...",
+  //     // duration: 3000
+  //   });
+  //   this.loader.present();
+  // }
+
+  contentScroll(){
+    console.log('content scrolled...');
   }
 
 }
