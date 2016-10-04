@@ -1,14 +1,20 @@
 // recommend investor and project common style
 .recommend{
-    .rank-detail{
-        padding-left: 20px;
-    }
 
-    // 底部切换栏去掉圆角
-    .segment-button:first-of-type {
-      border-radius: 0;
-    }
-    .segment-button:last-of-type {
-      border-radius: 0;
-    }
+  .rank-detail{
+      padding-left: 20px;
+  }
+
+  // 底部切换栏去掉圆角
+  .segment-button:first-of-type {
+    border-radius: 0;
+  }
+  .segment-button:last-of-type {
+    border-radius: 0;
+  }
+
+  ion-avatar[item-left]{
+    margin: 0 0 0 16px;
+  }
+
 }

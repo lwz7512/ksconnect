@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {PersonalPage} from '../personal/personal';
 
+import {WikiData} from '../../providers/wiki-data/wiki-data';
+import {Summary} from '../../pipes/summary';
+import {MissImage} from '../../pipes/MissImage';
+
 /*
   Generated class for the RankingInvestorPage page.
 
@@ -10,28 +14,30 @@ import {PersonalPage} from '../personal/personal';
 */
 @Component({
   templateUrl: 'build/pages/recommend-investor/recommend-investor.html',
+  pipes: [Summary, MissImage]
 })
 export class RecommendInvestorPage {
-    rank: string = "rank_C";
-    ranks : any[] = [
-        {top:1,username:'程科屹', title:'创始人',company:'险峰华兴',avatar:'img/thumbnail-puppy-1.jpg'},
-        {top:2,username:'雷军', title:'首席执行官',company:'小米科技',avatar:'img/thumbnail-kitten-2.jpg'},
-        {top:3,username:'李峰', title:'创始合伙人',company:'IDG资本',avatar:'img/thumbnail-puppy-3.jpg'},
-        {top:4,username:'Eric Liu', title:'投资经理',company:'险峰华兴',avatar:'img/thumbnail-puppy-4.jpg'},
-        {top:5,username:'屈田', title:'创始合伙人',company:'小米科技',avatar:'img/thumbnail-kitten-1.jpg'},
-        {top:6,username:'程科屹', title:'创始人',company:'小米科技',avatar:'img/thumbnail-puppy-1.jpg'},
-        {top:7,username:'雷军', title:'首席执行官',company:'小米科技',avatar:'img/thumbnail-kitten-2.jpg'},
-        {top:8,username:'李峰', title:'创始合伙人',company:'小米科技',avatar:'img/thumbnail-puppy-3.jpg'},
-        {top:9,username:'Eric Liu', title:'投资经理',company:'小米科技',avatar:'img/thumbnail-puppy-4.jpg'},
-        {top:10,username:'屈田', title:'创始合伙人',company:'小米科技',avatar:'img/thumbnail-kitten-1.jpg'},
-    ];
-    constructor(
-        private navCtrl: NavController
-    ) {}
 
-    openPersonalPage(i){
-        console.log(i);
-        var user = this.ranks[i];
-        this.navCtrl.push(PersonalPage,user);
-    }
+  isLoading: boolean;
+  investors: any[] = [];
+
+  constructor(
+    private navCtrl: NavController,
+    private wiki: WikiData
+  ) {
+    this.isLoading = true;
+  }
+
+  ionViewDidEnter(){
+    this.wiki.loadRecommendInvestors().then(data => {
+      console.log(data);
+      this.investors = data.res.data;
+      this.isLoading = false;
+    });
+  }
+
+  openPersonalPage(user){
+    this.navCtrl.push(PersonalPage,user);
+  }
+
 }

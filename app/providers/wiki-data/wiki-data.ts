@@ -52,5 +52,15 @@ export class WikiData {
     });
   }
 
+  // 获取推荐投资人
+  loadRecommendInvestors(){
+    return new Promise<any>(resolve => {
+      this.http.get(this._hostURL+'/wiki?type=1').subscribe(res => {
+          this.data = res.json();
+          resolve(this.data);
+      });
+    });
+  }
+
 
 }

@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams,AlertController  } from 'ionic-angular';
 
+import {MissImage} from '../../pipes/MissImage';
 
 @Component({
-    templateUrl: 'build/pages/personal/personal.html',
+  templateUrl: 'build/pages/personal/personal.html',
+  pipes: [MissImage]
 })
 export class PersonalPage {
-    username : string;
-    avatar : string;
 
-    constructor(private navCtrl: NavController,
+    person: any;
+
+    constructor(
+      private navCtrl: NavController,
         private modalCtrl: ModalController,
         private alertCtrl: AlertController,
-        private params: NavParams) {
-
-    }
+        private params: NavParams
+      ) {
+        this.person = {img: 'img/avatar_fml.png'};
+      }
 
     ionViewDidEnter(){
-        console.log(this.params);
-        this.username = this.params.data.username;
-        this.avatar = this.params.data.avatar;
+      console.log(this.params.data);
+      this.person = this.params.data;
     }
 
     showPrompt() {

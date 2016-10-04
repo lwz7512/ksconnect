@@ -1,12 +1,33 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>投资人推荐</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>投资人推荐</ion-title>
+    <ion-buttons end >
+      <button *ngIf="isLoading">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content class="ranking recommend">
-    <div class="z-segment">
+  <ion-list >
+    <ion-item class="rank-item" *ngFor="let prsn of investors" (click)="openPersonalPage(prsn)">
+      <ion-avatar item-left>
+        <img src="{{prsn.img | missImage}}">
+      </ion-avatar>
+      <div class="rank-detail">
+        <div class="rd-title">
+          <span>{{prsn.title}}</span>
+          <ion-badge item-right pink>{{prsn.tag}}</ion-badge>
+        </div>
+        <div class="rd-content">
+          <p>{{prsn.summary | summary}}</p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+    <!-- <div class="z-segment">
         <ion-segment [(ngModel)]="rank">
             <ion-segment-button value="rank_A">
                 约见次数
@@ -18,9 +39,9 @@
                 活跃度
             </ion-segment-button>
         </ion-segment>
-    </div>
+    </div> -->
 
-    <div [ngSwitch]="rank">
+    <!-- <div [ngSwitch]="rank">
         <ion-list *ngSwitchCase="'rank_A'">
             <ion-item class="rank-item" *ngFor="let rank of ranks;let i=index" (click)="openPersonalPage(i)">
                 <div class="rank-detail">
@@ -83,5 +104,5 @@
                 </div>
             </ion-item>
         </ion-list>
-    </div>
+    </div> -->
 </ion-content>
