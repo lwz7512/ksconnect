@@ -7,6 +7,7 @@ import { Camera, CameraOptions, Transfer, FileUploadOptions } from 'ionic-native
 
 import {CommunityData} from '../../providers/community-data/community-data';
 import {Host} from '../../providers/host/host';
+import {User} from '../../providers/user/user';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class ModalsContentPage {
       private cmntdata: CommunityData,
       private actionSheetCtrl: ActionSheetController,
       private alertCtrl: AlertController,
-      private host: Host
+      private host: Host,
+      private user: User
   ) {}
 
 
@@ -192,20 +194,19 @@ export class ModalsContentPage {
   _uploadImage(filePath){
     let upres:any;
     let win = (r) => {
-        console.log("Code = " + r.responseCode);
-        console.log("Response = " + r.response);
-        console.log("Sent = " + r.bytesSent);
-        // 解析结果
-        upres = JSON.parse(r.response);
-        // let imgURL = upres.res.data[0].link;
-        // 存起来，发微博用
-        this.uploadedImgs[filePath] = upres.res.data[0];
+      this._dimissLoading();
+      // 解析结果
+      upres = JSON.parse(r.response);
+      // alert(JSON.stringify(upres));
+      if(upres.meta.code == 403){
+        alert("登录信息已经失效，请重新登录!");
+        return;
+      }
+      // 存起来，发微博用
+      this.uploadedImgs[filePath] = upres.res.data[0];
 
-        console.log(this.uploadedImgs);
-
-        this._dimissLoading();
-        // FIXME, 不能在这里加清理拍照缓存，否则每次起名都是重复图片 @2016/09/10
-        // Camera.cleanup();
+      // FIXME, 不能在这里加清理拍照缓存，否则每次起名都是重复图片 @2016/09/10
+      // Camera.cleanup();
     };
 
     let fail = (error) => {
@@ -221,6 +222,11 @@ export class ModalsContentPage {
     options.fileKey = "files[]";
     options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
     options.mimeType = "text/plain";
+    // FIXME, 上传图片时也要加token
+    // @2016/10/06
+    let params:any = {};
+    params.token = this.user.getUserToken();
+    options.params = params;
 
     let fileTransfer = new Transfer();
     let url = encodeURI(this.host.getHostURL()+'/images');

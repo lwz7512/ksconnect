@@ -113,13 +113,17 @@ export class User {
     });
   }
 
+  // 登录成功后保存本地状态
   saveUser(user){
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.storage.set(this.USER_INFO, JSON.stringify(user));
     this.storage.set(this.TOKEN, user.token);
+    // 重新登录后，更新本地用户状态
+    // @2016/10/06
+    this._init();
   }
 
-  getUserToken(){
+  getUserToken(): string{
     return localStorage.getItem(this.TOKEN);
   }
 

@@ -77,6 +77,11 @@ export class SmartImage {
       image.src = this._imgURL;//load complete
     });
 
+    // FIXME, first check to detect if exist in viewport currently
+    // @2016/10/06
+    let inViewport = this._isElementInViewport(this.elm.nativeElement);
+    if(inViewport) this._delayLoad = false;
+
     if(this._delayLoad) {
       // console.log('start lazy loading...');
       this._startLazyLoadCheck();
