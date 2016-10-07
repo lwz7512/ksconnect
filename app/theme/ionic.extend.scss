@@ -1,3 +1,9 @@
+// 卡片里的图片缩略图高度限制
+ion-col img {
+  max-height: 100px;
+  width: auto;
+}
+
 ion-searchbar {
   background: rgba(0, 0, 0, 0.1);
 }

@@ -20,7 +20,9 @@
       <div class="rank-detail">
         <div class="rd-title">
           <span>{{proj.title}}</span>
-          <ion-badge item-right pink>{{proj.tag}}</ion-badge>
+          <ion-badge item-right pink *ngFor="let t of proj.tag" >
+            {{t}}
+          </ion-badge>
         </div>
         <div class="rd-content">
           <p>{{proj.summary | summary}}</p>

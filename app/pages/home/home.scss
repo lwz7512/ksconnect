@@ -22,49 +22,6 @@
   background-color: $ks-background-color;
 }
 
-[margin-top-1px] {
-  margin-top: 1px;
-}
-
-[margin-top-4px] {
-  margin-top: 4px;
-}
-
-[margin-top-6px] {
-  margin-top: 6px;
-}
-
-[margin-right-0] {
-  margin-right: 0;
-}
-
-[margin-left-0] {
-  margin-left: 0;
-}
-
-[margin-bottom-10px] {
-  margin-bottom: 10px;
-}
-
-[padding-2px] {
-  padding: 2px;
-}
-
-[padding-left-0] {
-  padding-left: 0;
-}
-
-[padding-right-0] {
-  padding-right: 0;
-}
-
-[padding-left-6px] {
-  padding-left: 6px;
-}
-
-[padding-right-6px] {
-  padding-right: 6px;
-}
 
 .toolbar {
   // min-height: 45px;
@@ -98,33 +55,6 @@
   color: #666666;
 }
 
-.margin-top-2px {
-  margin-top: 2px;
-}
-
-.margin-top-4px {
-  margin-top: 4px;
-}
-
-.padding-top-0 {
-  padding-top: 0;
-}
-
-.padding-top-1px {
-  padding-top: 1px;
-}
-
-.padding-top-10px {
-  padding-top: 10px;
-}
-
-.padding-left-10px {
-  padding-left: 10px;
-}
-
-.padding-right-10px {
-  padding-right: 10px;
-}
 
 .right-angle {
   border-radius: 0;
@@ -135,6 +65,7 @@
 }
 
 // 针对顶部工具栏的按钮图标，大一点
+// @2016/10/07
 .bar-button.larger {
   font-size: 2.0rem;
 }
@@ -165,11 +96,6 @@ img.select-img {
   stroke-width: 0;
 }
 
-// 卡片里的图片缩略图高度限制
-ion-col img {
-  max-height: 100px;
-  width: auto;
-}
 
 // 修改应用默认的 clear 按钮蓝色
 .button-clear {

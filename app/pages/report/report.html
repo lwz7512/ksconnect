@@ -29,8 +29,8 @@
             </ion-col>
         </ion-row> -->
         <div class="rl-tips">
-            <ion-badge *ngIf="report.tag">
-                {{report.tag}}
+            <ion-badge  *ngFor="let t of report.tag" margin-right-2px>
+              {{t}}
             </ion-badge>
             <time>
                 {{report.createtime | relativeTime}}

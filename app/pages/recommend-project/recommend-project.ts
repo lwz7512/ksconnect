@@ -29,6 +29,12 @@ export class RecommendProjectPage {
     ionViewDidEnter(){
       this.wiki.loadRecommendProjects().then(data => {
         // console.log(data);
+        // FIXME, for tag string...
+        // @2016/10/07
+        for(let i in data.res.data){
+          let tag = data.res.data[i].tag;
+          if(typeof tag == 'string') data.res.data[i].tag = [tag];
+        }
         this.projects = data.res.data;
         this.isLoading = false;
       });

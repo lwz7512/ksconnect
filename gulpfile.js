@@ -67,8 +67,11 @@ gulp.task('build', ['clean'], function(done){
 // 添加fontawesome字体拷贝 @2016/08/21
 gulp.task('fonts', function(){
   return copyFonts({
-    src: ['node_modules/ionic-angular/fonts/**/*.+(ttf|woff|woff2)',
-      'node_modules/font-awesome/fonts/**/*.+(eot|ttf|woff|woff2|svg)'],
+    src: [
+      'node_modules/ionic-angular/fonts/**/*.+(ttf|woff|woff2)',
+      'node_modules/font-awesome/fonts/**/*.+(eot|ttf|woff|woff2|svg)',
+      'app/assets/fonts/**/*.+(eot|ttf|woff)'
+    ],
     });
 });
 // 添加fontawesome样式编译 @2016/08/21

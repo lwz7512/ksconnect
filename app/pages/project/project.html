@@ -5,8 +5,11 @@
       <button *ngIf="isLoading">
         <ion-spinner name="dots"></ion-spinner>
       </button>
-      <button class="padding-right-10px larger" [hidden]="isSending" (click)="openWeiboModal()">
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="markPage()">
         <i class="fa fa-star-o" aria-hidden="true"></i>
+      </button>
+      <button class="padding-right-10px " [hidden]="isSending" (click)="sharePage()">
+        <ion-icon name="ios-share-outline"></ion-icon>
       </button>
     </ion-buttons>
     </ion-navbar>
@@ -41,7 +44,7 @@
       <ion-item>
           <button full light large>该项目还未进行SIP测评</button>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <div class="pc-item">行业领域</div>
       </ion-item>
       <ion-item>
@@ -53,14 +56,13 @@
               极具发展潜力 / 投资人推荐 / 靠谱项目 / 智能硬件
           </div>
         </div>
-      </ion-item>
-
-      <ion-item>
+      </ion-item> -->
+      <!-- <ion-item>
         <div class="pc-item">项目进展</div>
       </ion-item>
       <ion-item>
         <div class="pc-company auto-break">聊天机器人 (bot) 是当下即时通讯类 App 的附属品，也是当今商业领域的宠儿。它将人工智能与即时信息会话...</div>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </div>
 </ion-content>

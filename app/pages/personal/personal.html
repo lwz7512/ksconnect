@@ -7,7 +7,19 @@
 <ion-header class="personal-header">
 
   <ion-navbar>
-    <ion-title>个人主页</ion-title>
+    <ion-title></ion-title>
+    <ion-buttons end >
+      <button *ngIf="isLoading">
+        <ion-spinner name="dots"></ion-spinner>
+      </button>
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="markPage()">
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </button>
+      <button class="padding-right-10px larger" [hidden]="isSending" (click)="sharePage()">
+        <!-- <ion-icon name="ios-share-outline"></ion-icon> -->
+        <i class="ks iconfont-fenxiang" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -24,13 +36,19 @@
             {{person.title}}
         </div>
         <div class="description">
-            “作为一个资深审计人员，很开心能加入到这个APP里面，在这里我能找到喜欢的东西，和大家一起互动交流，感觉太好了！”
+            {{person.summary | summary}}
         </div>
     </div>
 
     <div class="p-content">
         <ion-list>
-            <ion-item>
+          <ion-item>
+            <div class="pc-item">机构简介</div>
+          </ion-item>
+          <ion-item>
+            <div class="pc-company auto-break" [innerHTML]="person.content"></div>
+          </ion-item>
+            <!-- <ion-item>
                 <div class="pc-item">TA发布的话题 <span class="z-tip-icon fa fa-angle-right"></span></div>
             </ion-item>
             <ion-item>
@@ -125,7 +143,7 @@
                     <ion-badge>项目管理</ion-badge>
                     <ion-badge>咨询</ion-badge>
                 </div>
-            </ion-item>
+            </ion-item> -->
         </ion-list>
     </div>
 
