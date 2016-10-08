@@ -15,7 +15,7 @@ export class MissImage {
     Takes a value and makes it lowercase.
    */
   transform(value: string, args: any[]) {
-    if(args) return 'img/'+ args;
+    if(value) return value;
     return 'img/avatar_fml.png';
   }
 }
